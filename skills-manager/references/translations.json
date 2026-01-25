@@ -1,0 +1,574 @@
+{
+  "code-auditor": {
+    "zh_name": "代码审计",
+    "zh_desc": "执行全面的代码库分析，包括架构、代码质量、安全性和性能。"
+  },
+  "code-execution": {
+    "zh_name": "代码执行",
+    "zh_desc": "在本地执行 Python 代码，节省令牌并确保安全。"
+  },
+  "code-refactor": {
+    "zh_name": "代码重构",
+    "zh_desc": "执行批量代码重构操作，如跨文件重命名变量或函数。"
+  },
+  "code-transfer": {
+    "zh_name": "代码迁移",
+    "zh_desc": "在文件间精确迁移代码，按行保留上下文。"
+  },
+  "codebase-documenter": {
+    "zh_name": "代码库文档生成",
+    "zh_desc": "生成全面的代码库说明文档，解释代码工作原理。"
+  },
+  "file-operations": {
+    "zh_name": "文件操作",
+    "zh_desc": "分析文件并获取详细元数据，包括大小、行数、修改时间等。"
+  },
+  "finishing-a-development-branch": {
+    "zh_name": "结束开发分支",
+    "zh_desc": "当实现完成且测试通过时使用，决定如何合并分支。"
+  },
+  "git-branch-cleanup": {
+    "zh_name": "Git 分支清理",
+    "zh_desc": "清理不再需要的 Git 分支。"
+  },
+  "git-pushing": {
+    "zh_name": "Git 推送",
+    "zh_desc": "使用规范提交信息暂存、提交和推送更改。"
+  },
+  "jta": {
+    "zh_name": "JSON 翻译",
+    "zh_desc": "使用 AI 优化质量将 JSON i18n 文件翻译成多语言。"
+  },
+  "opus-4-5-migration": {
+    "zh_name": "Opus 4.5 迁移",
+    "zh_desc": "将提示词和代码从旧版本 Claude 迁移到最新版本。"
+  },
+  "project-bootstrapper": {
+    "zh_name": "项目初始化",
+    "zh_desc": "使用最佳实践设置新项目或改进现有项目结构。"
+  },
+  "receiving-code-review": {
+    "zh_name": "接收代码审查",
+    "zh_desc": "在实施建议之前，接收并分析代码审查反馈。"
+  },
+  "requesting-code-review": {
+    "zh_name": "请求代码审查",
+    "zh_desc": "完成任务或主要功能后，在合并前请求代码审查。"
+  },
+  "review-implementing": {
+    "zh_name": "实现审查意见",
+    "zh_desc": "系统地处理和实现代码审查反馈。"
+  },
+  "test-fixing": {
+    "zh_name": "测试修复",
+    "zh_desc": "运行测试并使用智能错误分组系统地修复失败测试。"
+  },
+  "verification-before-completion": {
+    "zh_name": "完成前验证",
+    "zh_desc": "在声称工作完成前，验证所有标准是否满足。"
+  },
+  "RFP Analyzer": {
+    "zh_name": "RFP 分析器",
+    "zh_desc": "对 RFP 或需求文档进行结构化分析。"
+  },
+  "Story Refiner": {
+    "zh_name": "故事优化器",
+    "zh_desc": "评估用户故事质量并自动修正不符合标准项。"
+  },
+  "Story Writer": {
+    "zh_name": "故事编写器",
+    "zh_desc": "将 RFP 分析结果转换为高质量用户故事。"
+  },
+  "executing-plans": {
+    "zh_name": "执行计划",
+    "zh_desc": "当有书面实施计划时使用，在单独会话中执行。"
+  },
+  "feature-planning": {
+    "zh_name": "功能规划",
+    "zh_desc": "将功能请求分解为详细、可实施的计划。"
+  },
+  "planning-with-files": {
+    "zh_name": "文件化规划",
+    "zh_desc": "实现 Manus 风格的基于文件的规划，创建 task_plan.md。"
+  },
+  "project-development": {
+    "zh_name": "项目开发",
+    "zh_desc": "开始 LLM 项目或设计新系统时使用。"
+  },
+  "writing-plans": {
+    "zh_name": "编写计划",
+    "zh_desc": "在开始多步骤任务前编写详细规范或计划。"
+  },
+  "advanced-evaluation": {
+    "zh_name": "高级评估",
+    "zh_desc": "实现 LLM-as-judge 或比较不同模型输出时使用。"
+  },
+  "bdi-mental-states": {
+    "zh_name": "BDI 心理状态",
+    "zh_desc": "建模代理心理状态（信念、愿望、意图）时使用。"
+  },
+  "book-sft-pipeline": {
+    "zh_name": "书籍微调管道",
+    "zh_desc": "在书籍上微调或创建 SFT 数据集时使用。"
+  },
+  "comprehensive-research-agent": {
+    "zh_name": "综合研究代理",
+    "zh_desc": "确保研究彻底、验证可靠和推理透明。"
+  },
+  "context-compression": {
+    "zh_name": "上下文压缩",
+    "zh_desc": "压缩上下文或总结长文档时使用。"
+  },
+  "context-degradation": {
+    "zh_name": "上下文降级",
+    "zh_desc": "诊断上下文问题或调试模型遗忘时使用。"
+  },
+  "context-engineering-collection": {
+    "zh_name": "上下文工程集合",
+    "zh_desc": "上下文工程代理技能综合集合。"
+  },
+  "context-fundamentals": {
+    "zh_name": "上下文基础",
+    "zh_desc": "理解上下文原理或解释上下文窗口时使用。"
+  },
+  "context-optimization": {
+    "zh_name": "上下文优化",
+    "zh_desc": "优化上下文使用效率或减少令牌消耗时使用。"
+  },
+  "digital-brain": {
+    "zh_name": "数字大脑",
+    "zh_desc": "辅助写作或检查语音内容时使用。"
+  },
+  "dispatching-parallel-agents": {
+    "zh_name": "并行代理调度",
+    "zh_desc": "面对可并行任务时，调度多个代理同时工作。"
+  },
+  "evaluation": {
+    "zh_name": "评估",
+    "zh_desc": "评估代理性能或建立基准测试时使用。"
+  },
+  "filesystem-context": {
+    "zh_name": "文件系统上下文",
+    "zh_desc": "将上下文卸载到文件以节省内存时使用。"
+  },
+  "hosted-agents": {
+    "zh_name": "托管代理",
+    "zh_desc": "构建后台代理或创建服务器托管代理时使用。"
+  },
+  "memory-systems": {
+    "zh_name": "记忆系统",
+    "zh_desc": "实现代理记忆或持久化状态时使用。"
+  },
+  "multi-agent-patterns": {
+    "zh_name": "多代理模式",
+    "zh_desc": "设计多代理系统架构时使用。"
+  },
+  "prompt-optimizer": {
+    "zh_name": "提示词优化器",
+    "zh_desc": "优化、改进或重构提示词时使用。"
+  },
+  "pydanticai-docs": {
+    "zh_name": "PydanticAI 文档",
+    "zh_desc": "构建代理或使用 PydanticAI 框架时参考。"
+  },
+  "reasoning-trace-optimizer": {
+    "zh_name": "推理追踪优化器",
+    "zh_desc": "通过分析推理追踪调试和优化 AI 代理逻辑。"
+  },
+  "skill-evaluator": {
+    "zh_name": "技能评估器",
+    "zh_desc": "根据 Anthropic 最佳实践评估代理技能质量。"
+  },
+  "skill-template": {
+    "zh_name": "技能模板",
+    "zh_desc": "创建新代理技能的标准模板。"
+  },
+  "subagent-driven-development": {
+    "zh_name": "子代理驱动开发",
+    "zh_desc": "执行包含独立任务的计划时，使用子代理并行开发。"
+  },
+  "template-skill": {
+    "zh_name": "模板技能",
+    "zh_desc": "技能描述模板及 Claude 使用指南。"
+  },
+  "tool-design": {
+    "zh_name": "工具设计",
+    "zh_desc": "设计代理工具或创建函数调用规范时使用。"
+  },
+  "architecture-diagram-creator": {
+    "zh_name": "架构图生成器",
+    "zh_desc": "创建全面的 HTML 架构图，展示数据流和业务逻辑。"
+  },
+  "dashboard-creator": {
+    "zh_name": "仪表板生成器",
+    "zh_desc": "创建包含 KPI、图表和进度条的 HTML 仪表板。"
+  },
+  "flowchart-creator": {
+    "zh_name": "流程图生成器",
+    "zh_desc": "创建包含决策树和逻辑流的 HTML 流程图。"
+  },
+  "technical-doc-creator": {
+    "zh_name": "技术文档生成器",
+    "zh_desc": "创建包含代码块和 API 工作流的 HTML 技术文档。"
+  },
+  "timeline-creator": {
+    "zh_name": "时间轴生成器",
+    "zh_desc": "创建包含甘特图和里程碑的 HTML 时间轴。"
+  },
+  "videocut:installation": {
+    "zh_name": "视频剪辑: 环境安装",
+    "zh_desc": "环境准备。安装依赖、下载模型、验证环境。"
+  },
+  "videocut:self-update": {
+    "zh_name": "视频剪辑: 自更新",
+    "zh_desc": "自更新 skills。记录用户反馈，更新方法论和规则。"
+  },
+  "videocut:speech-cutting": {
+    "zh_name": "视频剪辑: 语音切割",
+    "zh_desc": "口播视频转录和口误识别。生成审查稿和删除任务清单。"
+  },
+  "videocut:subtitles": {
+    "zh_name": "视频剪辑: 字幕生成",
+    "zh_desc": "字幕生成与烧录。转录→词典纠错→审核→烧录。"
+  },
+  "videocut:video-editing": {
+    "zh_name": "视频剪辑: 剪辑执行",
+    "zh_desc": "执行视频剪辑。根据确认的删除任务执行FFmpeg剪辑。"
+  },
+  "writing-skills": {
+    "zh_name": "编写技能",
+    "zh_desc": "创建新技能、编辑现有技能或验证技能时使用。"
+  },
+  "arxiv-search": {
+    "zh_name": "arXiv 搜索",
+    "zh_desc": "搜索 arXiv 预印本库中的物理、数学、计算机科学论文。"
+  },
+  "conversation-analyzer": {
+    "zh_name": "对话分析器",
+    "zh_desc": "分析 Claude Code 对话历史以识别模式和改进点。"
+  },
+  "ensemble-solving": {
+    "zh_name": "集成求解",
+    "zh_desc": "并行生成多个解决方案并选择最佳方案。"
+  },
+  "notebooklm": {
+    "zh_name": "NotebookLM 查询",
+    "zh_desc": "直接查询 Google NotebookLM 笔记本内容。"
+  },
+  "obsidian-bases": {
+    "zh_name": "Obsidian 基础库",
+    "zh_desc": "创建和编辑带有视图、过滤器和公式的 Obsidian Bases。"
+  },
+  "obsidian-markdown": {
+    "zh_name": "Obsidian 笔记",
+    "zh_desc": "创建和编辑 Obsidian 风格的 Markdown 笔记。"
+  },
+  "web-research": {
+    "zh_name": "网络研究",
+    "zh_desc": "执行结构化的网络研究任务。"
+  },
+  "algorithmic-art": {
+    "zh_name": "算法艺术",
+    "zh_desc": "使用 p5.js 创建具有随机性和交互参数的算法艺术作品。"
+  },
+  "brand-guidelines": {
+    "zh_name": "品牌指南",
+    "zh_desc": "应用 Anthropic 的官方品牌颜色和排版规范。"
+  },
+  "canvas-design": {
+    "zh_name": "画布设计",
+    "zh_desc": "创建美观的 .png 和 .pdf 视觉艺术文档。"
+  },
+  "doc-coauthoring": {
+    "zh_name": "文档共创",
+    "zh_desc": "引导用户进行文档共创的结构化工作流。"
+  },
+  "docx": {
+    "zh_name": "Word 文档处理",
+    "zh_desc": "创建、编辑和分析 Word 文档，支持修订、评论等。"
+  },
+  "frontend-design": {
+    "zh_name": "前端设计",
+    "zh_desc": "创建高质量、生产级的前端界面设计。"
+  },
+  "internal-comms": {
+    "zh_name": "内部沟通",
+    "zh_desc": "协助编写各种格式的内部沟通文档。"
+  },
+  "mcp-builder": {
+    "zh_name": "MCP 构建器",
+    "zh_desc": "创建高质量 MCP 服务器的指南。"
+  },
+  "pdf": {
+    "zh_name": "PDF 工具箱",
+    "zh_desc": "提取文本、创建 PDF、合并文件等综合工具。"
+  },
+  "pptx": {
+    "zh_name": "PPT 演示文稿",
+    "zh_desc": "创建、编辑和分析 PowerPoint 演示文稿。"
+  },
+  "slack-gif-creator": {
+    "zh_name": "Slack GIF 制作",
+    "zh_desc": "创建优化用于 Slack 的动画 GIF。"
+  },
+  "theme-factory": {
+    "zh_name": "主题工厂",
+    "zh_desc": "为文档、幻灯片等工件应用统一的主题样式。"
+  },
+  "web-artifacts-builder": {
+    "zh_name": "Web 工件构建",
+    "zh_desc": "构建复杂的多组件 HTML 工件。"
+  },
+  "webapp-testing": {
+    "zh_name": "Web 应用测试",
+    "zh_desc": "使用 Playwright 对本地 Web 应用进行交互测试。"
+  },
+  "xlsx": {
+    "zh_name": "Excel 表格",
+    "zh_desc": "创建、编辑和分析 Excel 电子表格。"
+  },
+  "create-plan": {
+    "zh_name": "制定计划",
+    "zh_desc": "当用户明确要求制定编码任务计划时使用，生成简洁的计划。"
+  },
+  "gh-address-comments": {
+    "zh_name": "GitHub 评论处理",
+    "zh_desc": "帮助处理当前分支 PR 上的 Review 意见。"
+  },
+  "gh-fix-ci": {
+    "zh_name": "GitHub CI 修复",
+    "zh_desc": "检查 PR 状态，拉取错误日志并分析修复建议。"
+  },
+  "linear": {
+    "zh_name": "Linear 管理",
+    "zh_desc": "管理 Linear 中的 issue、项目和团队工作流。"
+  },
+  "notion-knowledge-capture": {
+    "zh_name": "Notion 知识捕获",
+    "zh_desc": "将对话和决策捕获到结构化的 Notion 页面中。"
+  },
+  "notion-meeting-intelligence": {
+    "zh_name": "Notion 会议智能",
+    "zh_desc": "准备会议材料，结合 Notion 上下文和研究。"
+  },
+  "notion-research-documentation": {
+    "zh_name": "Notion 研究文档",
+    "zh_desc": "在 Notion 中进行跨文档研究并综合成结构化文档。"
+  },
+  "notion-spec-to-implementation": {
+    "zh_name": "Notion 规格转实现",
+    "zh_desc": "将 Notion 规格转化为实施计划、任务和进度跟踪。"
+  },
+  "skill-installer": {
+    "zh_name": "技能安装器",
+    "zh_desc": "从精选列表或 GitHub 仓库安装 Codex 技能。"
+  },
+  "hugging-face-cli": {
+    "zh_name": "HF 命令行工具",
+    "zh_desc": "使用 hf CLI 执行 Hugging Face Hub 操作。"
+  },
+  "hugging-face-datasets": {
+    "zh_name": "HF 数据集",
+    "zh_desc": "在 Hugging Face Hub 上创建和管理数据集。"
+  },
+  "hugging-face-evaluation": {
+    "zh_name": "HF 评估",
+    "zh_desc": "在 Hugging Face 模型卡中添加和管理评估结果。"
+  },
+  "hugging-face-jobs": {
+    "zh_name": "HF 任务",
+    "zh_desc": "在 Hugging Face 上运行任何工作负载或任务。"
+  },
+  "hugging-face-model-trainer": {
+    "zh_name": "HF 模型训练",
+    "zh_desc": "使用 TRL 训练或微调语言模型。"
+  },
+  "hugging-face-paper-publisher": {
+    "zh_name": "HF 论文发布",
+    "zh_desc": "在 Hugging Face Hub 上发布和管理研究论文。"
+  },
+  "hugging-face-tool-builder": {
+    "zh_name": "HF 工具构建",
+    "zh_desc": "构建工具或脚本以在 Hugging Face 上完成任务。"
+  },
+  "hugging-face-trackio": {
+    "zh_name": "HF Trackio",
+    "zh_desc": "使用 Trackio 跟踪和可视化 ML 训练实验。"
+  },
+  "competitive-product-research": {
+    "zh_name": "竞品调研",
+    "zh_desc": "竞品/同类产品调研专家，输出可落地的对标报告与建议。"
+  },
+  "design-review-acceptance": {
+    "zh_name": "设计验收",
+    "zh_desc": "设计验收/回归对账专家，输出缺陷派单表。"
+  },
+  "dify-format-tester": {
+    "zh_name": "Dify 格式测试",
+    "zh_desc": "验证 Dify 工作流输出是否符合合规格式。"
+  },
+  "dify-langfuse-config": {
+    "zh_name": "Dify 监控配置",
+    "zh_desc": "为 Dify 应用配置 Langfuse 追踪。"
+  },
+  "sensor-skill": {
+    "zh_name": "神策数据查询",
+    "zh_desc": "通过神策查询用户的行为数据。"
+  },
+  "vision-ocr": {
+    "zh_name": "视觉 OCR",
+    "zh_desc": "从 UI/UX 图像中提取结构化文本和布局信息。"
+  },
+  "worklog-manager": {
+    "zh_name": "工时管理",
+    "zh_desc": "Jira 工时增删改查及月度填报管理。"
+  },
+  "artifacts-builder": {
+    "zh_name": "工件构建器",
+    "zh_desc": "创建精致的多组件 HTML 工件套件。"
+  },
+  "ask-questions-if-underspecified": {
+    "zh_name": "需求澄清",
+    "zh_desc": "在实施前澄清不明确的需求。仅在需要时使用。"
+  },
+  "backend-development": {
+    "zh_name": "后端开发",
+    "zh_desc": "后端 API 设计、数据库架构和微服务模式开发。"
+  },
+  "changelog-generator": {
+    "zh_name": "更新日志生成器",
+    "zh_desc": "通过分析提交历史自动生成面向用户的更新日志。"
+  },
+  "code-documentation": {
+    "zh_name": "代码文档",
+    "zh_desc": "编写有效的代码文档，包括 API 文档、README 和注释。"
+  },
+  "code-refactoring": {
+    "zh_name": "代码重构模式",
+    "zh_desc": "在不改变行为的情况下改进代码质量的重构模式和技术。"
+  },
+  "code-review": {
+    "zh_name": "代码审查",
+    "zh_desc": "使用专门的审查模式自动进行 Pull Request 代码审查。"
+  },
+  "competitive-ads-extractor": {
+    "zh_name": "竞品广告提取",
+    "zh_desc": "从 Facebook、LinkedIn 等广告库中提取并分析竞争对手广告。"
+  },
+  "content-research-writer": {
+    "zh_name": "内容研究写作",
+    "zh_desc": "通过研究、添加引用和结构化论证协助编写高质量内容。"
+  },
+  "database-design": {
+    "zh_name": "数据库设计",
+    "zh_desc": "PostgreSQL 等数据库的模式设计、优化和迁移模式。"
+  },
+  "developer-growth-analysis": {
+    "zh_name": "开发者成长分析",
+    "zh_desc": "分析最近的 Claude Code 聊天记录，识别编码模式和成长点。"
+  },
+  "domain-name-brainstormer": {
+    "zh_name": "域名头脑风暴",
+    "zh_desc": "为项目生成创意域名并检查可用性。"
+  },
+  "expo-app-design": {
+    "zh_name": "Expo 应用设计",
+    "zh_desc": "使用 Expo Router 和 NativeWind 构建美观的跨平台移动应用。"
+  },
+  "expo-deployment": {
+    "zh_name": "Expo 部署",
+    "zh_desc": "将 Expo 应用部署到 iOS App Store、Android Play Store 和 Web。"
+  },
+  "file-organizer": {
+    "zh_name": "文件整理器",
+    "zh_desc": "通过理解上下文智能整理计算机上的文件和文件夹。"
+  },
+  "image-enhancer": {
+    "zh_name": "图像增强",
+    "zh_desc": "提高图像（尤其是屏幕截图）的质量，增强分辨率。"
+  },
+  "invoice-organizer": {
+    "zh_name": "发票整理",
+    "zh_desc": "自动整理发票和收据以便税务准备。"
+  },
+  "javascript-typescript": {
+    "zh_name": "JS/TS 开发",
+    "zh_desc": "使用 ES6+、Node.js 和 React 进行现代 JavaScript 和 TypeScript 开发。"
+  },
+  "jira-issues": {
+    "zh_name": "Jira 问题管理",
+    "zh_desc": "通过自然语言创建、更新和管理 Jira 问题。"
+  },
+  "job-application": {
+    "zh_name": "求职申请",
+    "zh_desc": "根据简历和职位偏好编写定制的求职信和申请。"
+  },
+  "lead-research-assistant": {
+    "zh_name": "销售线索研究",
+    "zh_desc": "分析业务需求，识别产品或服务的高质量潜在客户。"
+  },
+  "llm-application-dev": {
+    "zh_name": "LLM 应用开发",
+    "zh_desc": "使用大型语言模型构建应用 - 提示工程、RAG 等。"
+  },
+  "meeting-insights-analyzer": {
+    "zh_name": "会议洞察分析",
+    "zh_desc": "分析会议记录，揭示行为模式、承诺和情绪。"
+  },
+  "python-development": {
+    "zh_name": "Python 开发",
+    "zh_desc": "使用 Python 3.12+、Django、FastAPI 进行现代 Python 开发。"
+  },
+  "qa-regression": {
+    "zh_name": "QA 回归测试",
+    "zh_desc": "使用可复用的测试技能自动化 QA 回归测试。"
+  },
+  "raffle-winner-picker": {
+    "zh_name": "抽奖赢家选择",
+    "zh_desc": "从列表或电子表格中随机选择赠品赢家。"
+  },
+  "react-best-practices": {
+    "zh_name": "React 最佳实践",
+    "zh_desc": "React 开发指南，包括 Hook、组件模式和状态管理。"
+  },
+  "skill-scanner": {
+    "zh_name": "技能扫描器",
+    "zh_desc": "扫描 GitHub 仓库或本地目录，发现并安装符合标准的新技能。"
+  },
+  "skills-manager": {
+    "zh_name": "技能管理器",
+    "zh_desc": "扫描、更新、整理工作区所有 Skill，生成清单，检测冲突。"
+  },
+  "upgrading-expo": {
+    "zh_name": "Expo 升级",
+    "zh_desc": "升级 Expo SDK 版本和修复依赖问题的指南。"
+  },
+  "vercel-deploy": {
+    "zh_name": "Vercel 部署",
+    "zh_desc": "将应用部署到 Vercel，支持边缘函数和 ISR。"
+  },
+  "video-downloader": {
+    "zh_name": "视频下载",
+    "zh_desc": "从 YouTube 等平台下载视频以供离线观看或编辑。"
+  },
+  "web-design-guidelines": {
+    "zh_name": "Web 设计指南",
+    "zh_desc": "响应式布局、无障碍设计和视觉层次的现代 Web 设计原则。"
+  },
+  "using-git-worktrees": {
+    "zh_name": "Git Worktree",
+    "zh_desc": "使用 Git Worktree 隔离开发环境。"
+  },
+  "systematic-debugging": {
+    "zh_name": "系统化调试",
+    "zh_desc": "遇到 Bug 或测试失败时使用的系统化调试流程。"
+  },
+  "test-driven-development": {
+    "zh_name": "测试驱动开发",
+    "zh_desc": "TDD 工作流，在编写实现代码前先写测试。"
+  },
+  "using-superpowers": {
+    "zh_name": "能力引导",
+    "zh_desc": "在对话开始时引导用户发现和使用各项技能。"
+  }
+}
