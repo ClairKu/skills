@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="东方财富妙想 AI Skills 平台深度竞品分析：产品定位、服务闭环、体验、商业模式、治理风险与盈米行动路线图。">
+  <title>东方财富妙想 AI Skills｜平台服务深度竞品分析</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}
+    :root{
+      --ink:#162033;--muted:#60708a;--line:#dce5f0;--paper:#fff;--bg:#eef3f9;
+      --blue:#3569e8;--blue2:#6b51f5;--cyan:#3dbbc7;--red:#d83946;--orange:#ef8d40;
+      --green:#16a36a;--amber:#c47b0c;--violet:#7e57d8;--soft:#f5f8fc;
+      --shadow:0 16px 44px rgba(28,50,88,.10);--shadow2:0 6px 20px rgba(28,50,88,.08);
+      --r:18px;--r2:26px;
+    }
+    body{margin:0;background:radial-gradient(circle at 10% -10%,#dbe9ff 0,transparent 30%),var(--bg);color:var(--ink);font:14px/1.65 Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+    a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+    .wrap{width:min(1180px,calc(100% - 28px));margin:0 auto;padding:22px 0 54px}
+    .hidden{display:none!important}
+    .gate{position:fixed;inset:0;z-index:99;display:grid;place-items:center;padding:20px;background:
+      radial-gradient(circle at 50% 0,rgba(100,119,255,.38),transparent 36%),
+      linear-gradient(145deg,#101a33,#172347 55%,#2a184e)}
+    .gate-card{width:min(430px,100%);padding:34px;border:1px solid rgba(255,255,255,.14);border-radius:26px;background:rgba(255,255,255,.09);box-shadow:0 30px 90px rgba(0,0,0,.3);backdrop-filter:blur(18px);color:#fff}
+    .lock{width:58px;height:58px;display:grid;place-items:center;border-radius:18px;background:linear-gradient(135deg,#5c86ff,#8361f5);font-size:28px;box-shadow:0 12px 30px rgba(91,119,255,.36)}
+    .gate h1{font-size:26px;line-height:1.25;margin:20px 0 10px}.gate p{color:#cbd5ef;margin:0 0 22px}
+    .gate-row{display:flex;gap:9px}.gate input{min-width:0;flex:1;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:13px 14px;background:rgba(255,255,255,.12);color:#fff;font-size:16px;outline:none}
+    .gate input:focus{border-color:#9cb6ff;box-shadow:0 0 0 3px rgba(122,153,255,.16)}.gate button{border:0;border-radius:12px;padding:0 20px;background:#fff;color:#24345f;font-weight:750;cursor:pointer}
+    .gate-error{min-height:22px;margin-top:10px;color:#ffb7bd;font-size:12px}
+    .gate-note{font-size:11px!important;color:#91a0c7!important;margin:12px 0 0!important}
+    .hero{position:relative;overflow:hidden;margin-bottom:16px;border-radius:var(--r2);background:
+      radial-gradient(circle at 88% 10%,rgba(255,255,255,.24),transparent 27%),
+      linear-gradient(135deg,#90c1dd 0,#b7d9ec 46%,#daeefa 100%);box-shadow:var(--shadow);min-height:260px}
+    .hero::after{content:"SKILL";position:absolute;right:-25px;bottom:-92px;font-weight:900;font-size:190px;letter-spacing:-10px;color:rgba(28,70,108,.06)}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 310px;min-height:260px}
+    .hero-main{padding:34px 38px}.kicker{font-size:10px;font-weight:800;letter-spacing:2.2px;text-transform:uppercase;color:#335e7b}
+    .hero h1{font-size:36px;line-height:1.18;letter-spacing:-1.2px;margin:10px 0 12px;color:#17354c}
+    .hero-lead{max-width:720px;margin:0;color:#375d73;font-size:15px}
+    .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.tag{display:inline-flex;gap:6px;align-items:center;border:1px solid rgba(23,53,76,.12);border-radius:999px;padding:5px 11px;background:rgba(255,255,255,.42);font-size:11px;color:#294e68}
+    .hero-verdict{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:28px;border-left:1px solid rgba(23,53,76,.12)}
+    .hero-verdict small{font-size:10px;letter-spacing:1.5px;color:#4d7187}.hero-verdict strong{font-size:44px;line-height:1.05;color:#173f62;margin:8px 0}.hero-verdict span{max-width:200px;color:#4a6e83;font-size:12px}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow2);overflow:hidden;margin-bottom:16px}
+    .kpi{position:relative;padding:20px 18px;border-right:1px solid #e8eef5}.kpi:last-child{border-right:0}.kpi::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--c)}
+    .kpi b{display:block;font-size:27px;line-height:1;color:var(--c)}.kpi span{display:block;color:var(--muted);font-size:11px;margin-top:7px}.kpi small{display:block;color:#9aa8bb;font-size:9px;text-transform:uppercase;letter-spacing:.8px}
+    .callouts,.g2,.g3{display:grid;gap:14px}.callouts,.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+    .callouts{margin-bottom:16px}.callout{padding:17px 18px;border:1px solid color-mix(in srgb,var(--c) 22%,white);border-radius:15px;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 7%,white),color-mix(in srgb,var(--c) 14%,white));box-shadow:var(--shadow2)}
+    .callout b{display:block;color:color-mix(in srgb,var(--c) 85%,black);font-size:12px}.callout p{margin:4px 0 0;color:#4c5e77}
+    .card{margin-bottom:16px;padding:24px;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);box-shadow:0 2px 8px rgba(28,50,88,.05)}
+    .section-head{display:flex;gap:14px;align-items:flex-end;justify-content:space-between;margin-bottom:15px}.section-head h2{font-size:19px;line-height:1.25;margin:0}.section-head p{margin:0;color:var(--muted);font-size:11px;text-align:right;max-width:470px}
+    .card h3{margin:0 0 7px;font-size:14px}.card p{margin:0 0 9px}.muted{color:var(--muted)}
+    .scope-table,.matrix,.forces,.roadmap-table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px}
+    th,td{padding:10px 11px;text-align:left;vertical-align:top;border-bottom:1px solid #e9eef5}th{background:#f6f8fb;color:#758399;font-size:9px;text-transform:uppercase;letter-spacing:.75px}
+    tr:last-child td{border-bottom:0}.pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#edf2f8;color:#66768b;font-size:9px;font-weight:700}
+    .pill.blue{color:#2c62de;background:#eaf0ff}.pill.green{color:#0d8a58;background:#e4f6ee}.pill.red{color:#c32937;background:#fdebee}.pill.amber{color:#a96808;background:#fff2d8}.pill.violet{color:#6845c4;background:#f0eaff}
+    .coverage{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.source-chip{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--soft);text-align:center}
+    .source-chip b{display:block;font-size:18px}.source-chip span{font-size:10px;color:var(--muted)}
+    .conclusion-list{counter-reset:findings;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0;padding:0;list-style:none}
+    .conclusion-list li{counter-increment:findings;border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--soft);color:#465970}
+    .conclusion-list li::before{content:"0" counter(findings);display:block;margin-bottom:7px;font-size:10px;font-weight:800;letter-spacing:1px;color:var(--blue)}
+    .conclusion-list strong{display:block;color:var(--ink);font-size:13px;margin-bottom:4px}
+    .blueprint{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:15px 0 20px}.layer{position:relative;border:1px solid var(--line);border-radius:14px;padding:14px 12px;background:var(--soft);min-height:125px}
+    .layer:not(:last-child)::after{content:"→";position:absolute;right:-11px;top:47px;z-index:2;color:#8fa0b5;font-weight:800}
+    .layer small{font-size:9px;color:var(--c);font-weight:800;letter-spacing:.7px}.layer h3{margin:6px 0 5px}.layer p{font-size:10px;color:var(--muted);line-height:1.5}
+    .image-frame{overflow:hidden;border:1px solid var(--line);border-radius:15px;background:#f6f8fc}.image-frame img{display:block;width:100%;height:auto}.caption{padding:9px 12px;color:#7b899c;font-size:9px;border-top:1px solid var(--line)}
+    .bench-wrap{overflow-x:auto}.matrix{min-width:980px}.matrix td:first-child{font-weight:700;color:var(--ink)}.strong{color:var(--green);font-weight:700}.weak{color:var(--red);font-weight:700}
+    .strategic-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:14px}.swot{display:grid;grid-template-columns:1fr 1fr;gap:8px}.swot>div{padding:14px;border-radius:13px;border:1px solid color-mix(in srgb,var(--c) 20%,white);background:color-mix(in srgb,var(--c) 7%,white)}
+    .swot b{display:block;color:var(--c);font-size:10px;letter-spacing:.7px;margin-bottom:5px}.swot p{font-size:11px;color:#506178;margin:0}
+    .forces td:first-child{font-weight:700}.heat{height:6px;border-radius:99px;background:#e9eef5;overflow:hidden;margin-top:5px}.heat i{display:block;height:100%;width:var(--w);background:var(--c)}
+    .pestle{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.signal{padding:13px;border-radius:12px;background:#f5f8fc;border:1px solid var(--line)}.signal b{font-size:11px}.signal p{font-size:10px;color:var(--muted);margin:4px 0}.signal span{font-size:9px;color:var(--blue)}
+    .finding{position:relative;margin-top:9px;padding:15px 16px 15px 20px;border-radius:0 13px 13px 0;border-left:4px solid var(--c);background:color-mix(in srgb,var(--c) 7%,white)}
+    .finding .dim{font-size:9px;font-weight:800;color:var(--c);letter-spacing:1px}.finding h3{font-size:14px;margin:4px 0}.finding p{color:#55667d;font-size:11px;margin:0}.finding .evidence{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+    .pattern{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--soft)}.pattern .no{font-size:22px;font-weight:850;color:var(--c)}.pattern h3{margin:3px 0 6px}.pattern p{font-size:11px;color:var(--muted)}.pattern ul{margin:8px 0 0;padding-left:17px;font-size:10px;color:#4f6178}.pattern li{margin:4px 0}
+    .roadmap-table .p0{color:#bd2532;background:#fde9ec}.roadmap-table .p1{color:#a56506;background:#fff0d2}.roadmap-table .p2{color:#275cc9;background:#e8efff}
+    .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.phase{position:relative;padding:15px;border:1px solid var(--line);border-radius:13px;background:var(--soft)}
+    .phase small{font-size:9px;color:var(--blue);font-weight:800}.phase h3{margin:5px 0}.phase p{font-size:10px;color:var(--muted)}
+    .ev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.ev{padding:13px;border:1px solid var(--line);border-radius:12px;background:var(--soft);font-size:10px}
+    .ev b{display:block;color:var(--blue);font-size:10px}.ev p{margin:4px 0 7px;color:var(--muted)}.ev a{font-size:9px}
+    .disc{margin-bottom:0;background:#f6f8fb;color:#718096;font-size:10px}.disc ul{margin:7px 0 0;padding-left:17px}.disc strong{color:#55657b}
+    footer{text-align:center;color:#a0abba;font-size:9px;padding:18px}
+    @media(max-width:980px){
+      .hero-grid{grid-template-columns:1fr}.hero-verdict{border-left:0;border-top:1px solid rgba(23,53,76,.12)}
+      .g2,.strategic-grid{grid-template-columns:1fr}.g3{grid-template-columns:1fr 1fr}.blueprint{grid-template-columns:repeat(3,1fr)}.layer:nth-child(3)::after{display:none}
+      .ev-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:640px){
+      .wrap{width:min(100% - 16px,1180px);padding-top:8px}.hero-main{padding:26px 22px}.hero h1{font-size:28px}.hero-verdict{padding:22px}.hero-verdict strong{font-size:36px}
+      .kpis{grid-template-columns:1fr 1fr}.kpi:nth-child(2){border-right:0}.kpi:nth-child(-n+2){border-bottom:1px solid #e8eef5}
+      .callouts,.g3,.conclusion-list,.pestle,.timeline,.ev-grid{grid-template-columns:1fr}.card{padding:18px}.section-head{display:block}.section-head p{text-align:left;margin-top:4px}
+      .blueprint{grid-template-columns:1fr}.layer::after{display:none}.swot{grid-template-columns:1fr}.coverage{grid-template-columns:1fr 1fr}
+      .gate-row{display:grid}.gate button{padding:13px}
+    }
+    @media print{.gate{display:none}.hidden{display:block!important}.wrap{width:100%;padding:0}.card,.hero,.kpis{box-shadow:none;break-inside:avoid}body{background:#fff}}
+  </style>
+</head>
+<body>
+  <div class="gate" id="gate">
+    <div class="gate-card">
+      <div class="lock">🔐</div>
+      <h1>内部竞品研究</h1>
+      <p>输入访问密码，查看东方财富妙想 AI Skills 平台服务拆解与盈米行动建议。</p>
+      <div class="gate-row">
+        <input id="password" type="password" inputmode="numeric" autocomplete="current-password" placeholder="访问密码" aria-label="访问密码">
+        <button id="unlock">进入报告</button>
+      </div>
+      <div class="gate-error" id="gate-error"></div>
+      <p class="gate-note">提示：本页面密码仅为前端访问提示，不等同于服务端安全鉴权。</p>
+    </div>
+  </div>
+
+  <main class="wrap hidden" id="report">
+    <!-- 1. HERO -->
+    <header class="hero">
+      <div class="hero-grid">
+        <div class="hero-main">
+          <div class="kicker">Competitive Product Research · 2026-07-28</div>
+          <h1>东方财富妙想 AI Skills<br>平台服务深度竞品分析</h1>
+          <p class="hero-lead">它不是一个孤立的 Skill 目录，而是把金融数据、专业方法、Agent 调度、跨端分发、积分计量和东方财富账户体系连成一条服务增长链。</p>
+          <div class="meta">
+            <span class="tag">行业：金融 AI / Agent 能力平台</span>
+            <span class="tag">对标：东财 · Wind · iFinD · TDX · 盈米</span>
+            <span class="tag">用途：内部产品决策</span>
+            <span class="tag">战略模块：格局 / SWOT / 五力 / PESTLE</span>
+          </div>
+        </div>
+        <div class="hero-verdict">
+          <small>核心判断</small>
+          <strong>学闭环<br>不抄广场</strong>
+          <span>复制页面会落后；复制“能力→服务→分发→计量→经营”的机制才有价值。</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. KPI STRIP -->
+    <section class="kpis" aria-label="报告摘要指标">
+      <div class="kpi" style="--c:var(--blue)"><small>Evidence</small><b>15</b><span>组可追溯来源与实测证据</span></div>
+      <div class="kpi" style="--c:var(--orange)"><small>Findings</small><b>6</b><span>项产品与治理关键发现</span></div>
+      <div class="kpi" style="--c:var(--green)"><small>Patterns</small><b>4</b><span>项值得复用的产品模式</span></div>
+      <div class="kpi" style="--c:var(--violet)"><small>Roadmap</small><b>9</b><span>项 P0–P2 可执行动作</span></div>
+    </section>
+
+    <!-- 3. CALLOUTS -->
+    <section class="callouts">
+      <div class="callout" style="--c:var(--blue)">
+        <b>🔎 TOP INSIGHT · 真正的产品不是 Skill 广场</b>
+        <p>广场负责发现，妙想 Claw 负责调度，MCP/数据库负责执行，API Key 与积分负责身份和计量，APP/ima/小艺/ArkClaw 负责分发。缺一层都无法形成平台飞轮。<span class="pill blue">SRC-P-002/003/004/006</span></p>
+      </div>
+      <div class="callout" style="--c:var(--green)">
+        <b>⚡ PRIORITY ACTION · 盈米先定义“服务对象”</b>
+        <p>用户端应卖“基金诊断、家庭规划、账户复盘”等可持续服务；Skill/MCP 只在专业视图和开发者层出现。统一 Service ID 贯穿版本、权限、评测、运行与结算。</p>
+      </div>
+    </section>
+
+    <!-- 4. RESEARCH SCOPE + SOURCE COVERAGE -->
+    <section class="g2">
+      <article class="card">
+        <div class="section-head"><h2>🎯 调研范围</h2><p>单竞品深拆 + 行业参照 + 我方方案对照</p></div>
+        <table class="scope-table">
+          <tr><th>维度</th><th>执行口径</th></tr>
+          <tr><td>目标问题</td><td>东财妙想 Skills 是什么服务、如何形成业务闭环、盈米该学什么</td></tr>
+          <tr><td>核心链路</td><td>发现 → 理解 → 使用/安装 → Agent 调度 → 数据执行 → 计量 → 回流主业务</td></tr>
+          <tr><td>体验维度</td><td>D1 信息架构、D2 流程、D3 视觉、D4 文案、D5 行为、D6 异常、D7 跨端、D8 合规</td></tr>
+          <tr><td>证据截止</td><td>2026-07-28；宣传数字与实测状态分别标注</td></tr>
+          <tr><td>边界</td><td>未读取或暴露账号凭证；未把规划 Demo 当作已上线能力</td></tr>
+        </table>
+      </article>
+      <article class="card">
+        <div class="section-head"><h2>📦 证据覆盖</h2><p>关键结论必须挂 SRC 编号</p></div>
+        <div class="coverage">
+          <div class="source-chip"><b style="color:var(--green)">✓</b><span>已登录页面实测</span></div>
+          <div class="source-chip"><b style="color:var(--green)">✓</b><span>东方财富官方材料</span></div>
+          <div class="source-chip"><b style="color:var(--green)">✓</b><span>官方 MCP 安装文档</span></div>
+          <div class="source-chip"><b style="color:var(--green)">✓</b><span>010350 同题实测</span></div>
+          <div class="source-chip"><b style="color:var(--amber)">△</b><span>第三方竞品公开页</span></div>
+          <div class="source-chip"><b style="color:var(--red)">—</b><span>收入/留存未公开</span></div>
+        </div>
+        <div class="finding" style="--c:var(--amber);margin-top:12px">
+          <div class="dim">SOURCE BOUNDARY</div>
+          <p>官方曾分别披露“6 大核心功能”“31 款广场 Skill”“8 项外部分发 Skill”“7 项 ima Skill”。这些是不同日期、不同渠道的产品口径，不能合并成一个当前总数。<span class="pill amber">SRC-P-001/002/005/006</span></p>
+        </div>
+      </article>
+    </section>
+
+    <!-- 5. SUMMARY CONCLUSIONS -->
+    <section class="card">
+      <div class="section-head"><h2>📋 核心结论</h2><p>事实 → 判断 → 对盈米的动作</p></div>
+      <ol class="conclusion-list">
+        <li><strong>它是“金融 AI 服务操作系统”的雏形</strong>Skill 广场只是可见层，Claw、MCP、积分和账户才是护城河。<span class="pill blue">SRC-P-003/004</span></li>
+        <li><strong>它当前更像精选货架，不是成熟双边市场</strong>页面可创建 Skill、展示官方/内置/外部精选，但公开材料未披露上架审核、分成、评分与治理规则。<span class="pill blue">SRC-U-001</span></li>
+        <li><strong>“广而全”已形成发现优势</strong>官方金融能力、办公自动化、安全工具、人格/投资思维同场，用户不必离开妙想寻找组件。<span class="pill blue">SRC-P-002</span></li>
+        <li><strong>跨端分发是增长引擎</strong>Web、APP、OpenClaw、ima、华为小艺、火山 ArkClaw 让能力跳出单一产品入口。<span class="pill blue">SRC-P-005/006/007</span></li>
+        <li><strong>质量与密钥治理尚未达到“金融生产级”透明度</strong>Skill 卡缺少权限、成本、失败边界、评测；安装文档要求把 Key 作为明文写入多种客户端配置。<span class="pill red">SRC-P-009</span></li>
+        <li><strong>盈米的机会不是做更大的广场</strong>应把账户、适当性、投顾服务与可追溯交付做成差异化；底层能力通过开发者层开放，用户只看结果型服务。</li>
+      </ol>
+    </section>
+
+    <!-- 6. COMPETITIVE BENCHMARK -->
+    <section class="card">
+      <div class="section-head"><h2>📊 平台服务蓝图与竞品对标</h2><p>先看东财六层闭环，再看同类产品在哪一层竞争</p></div>
+      <div class="blueprint" aria-label="东方财富妙想 AI Skills 六层服务蓝图">
+        <div class="layer" style="--c:var(--blue)"><small>01 · DISCOVERY</small><h3>Skill 广场</h3><p>搜索、来源筛选、分类、详情、使用、创建与下载。</p></div>
+        <div class="layer" style="--c:var(--violet)"><small>02 · ORCHESTRATION</small><h3>妙想 Claw</h3><p>意图识别、按需加载、跨 Skill 串联、文件与定时任务。</p></div>
+        <div class="layer" style="--c:var(--cyan)"><small>03 · CAPABILITY</small><h3>官方 / 社区 Skill</h3><p>金融分析、研究、查询、办公、安全、人格与投资框架。</p></div>
+        <div class="layer" style="--c:var(--green)"><small>04 · DATA</small><h3>MCP / Choice</h3><p>Streamable HTTP、专业数据、API Key、量化接口。</p></div>
+        <div class="layer" style="--c:var(--orange)"><small>05 · METERING</small><h3>积分 / 会员</h3><p>Claw 与 MCP/Skill 统一计量，权益和积分包承接付费。</p></div>
+        <div class="layer" style="--c:var(--red)"><small>06 · DISTRIBUTION</small><h3>APP / 外部 Agent</h3><p>东方财富 APP、ima、小艺、ArkClaw 与用户自有 Claw。</p></div>
+      </div>
+      <div class="g2">
+        <figure class="image-frame">
+          <img src="assets/skill-plaza-31.png" alt="东方财富官方材料中的妙想 Skill 广场界面">
+          <figcaption class="caption">官方发布图：搜索 + 来源 + 分类 + Skill 卡片构成广场主交互。SRC-P-002</figcaption>
+        </figure>
+        <figure class="image-frame">
+          <img src="assets/industry-research-case.png" alt="妙想 Skill 广场五大业务场景与 Skill 池">
+          <figcaption class="caption">官方发布图：首批 31 款 Skill 被组织为金融投研、效率自动化、AI 表现、安全、人格/投资思维五大战区。SRC-P-002</figcaption>
+        </figure>
+      </div>
+      <div class="bench-wrap" style="margin-top:16px">
+        <table class="matrix">
+          <thead><tr><th>竞品 / 参照</th><th>产品重心</th><th>发现与安装</th><th>数据 / 执行</th><th>调度 / 交付</th><th>商业闭环</th><th>对盈米的启示</th><th>证据</th></tr></thead>
+          <tbody>
+            <tr><td>东方财富妙想</td><td class="strong">C/B 两端金融 AI 入口</td><td>广场、下载、Key、跨端分发</td><td>Choice / MCP / 官方 Skill</td><td class="strong">Claw 按需加载与跨 Skill 串联</td><td class="strong">积分、会员、账户/Choice 权益</td><td>最值得学完整飞轮；治理透明度要补强</td><td>SRC-P-002/003/004</td></tr>
+            <tr><td>Wind AIFin Market</td><td>金融能力市场</td><td>公开市场式发现</td><td class="strong">Wind 数据与优质 Skill</td><td>兼容主流 Agent</td><td>专业数据订阅逻辑</td><td>开发者能力市场的直接参照</td><td>SRC-P-011</td></tr>
+            <tr><td>同花顺 iFinD</td><td>机构投研工作流</td><td>公开广场证据有限</td><td class="strong">MCP + Skills + 专业数据</td><td class="strong">定制 Agent、定时自动任务</td><td>B 端终端与解决方案</td><td>对标自动化、风控、舆情与机构场景</td><td>SRC-P-012</td></tr>
+            <tr><td>通达信 TDX SkillHub</td><td>金融 Skill 目录</td><td class="strong">源码/视图、自然语言安装提示</td><td>内置与外部 Skill 分层</td><td>TdxClaw 承接</td><td>未见统一计量公开证据</td><td>源码透明、内置边界、安装提示值得借鉴</td><td>SRC-P-010</td></tr>
+            <tr><td>盈米 OAP / AI 实验室</td><td class="strong">投顾服务与企业治理</td><td>服务广场为规划 / Demo</td><td>投研/交易/账户/适当性能力</td><td class="strong">组件化服务、来源与版本链方向</td><td class="weak">经营结果仍需验证</td><td>不与数据商拼“多”；把服务可信交付做深</td><td>SRC-I-001/002</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 7. STRATEGIC ANALYSIS -->
+    <section class="card">
+      <div class="section-head"><h2>🧠 战略分析</h2><p>SWOT · 五力 · PESTLE；对象为东方财富妙想 Skills 服务</p></div>
+      <div class="strategic-grid">
+        <div>
+          <h3>SWOT 行动矩阵</h3>
+          <div class="swot">
+            <div style="--c:var(--green)"><b>STRENGTHS</b><p>东方财富账户与流量、Choice 专业数据、C/B 多终端、证券/基金业务承接，形成别人难复制的分发与数据组合。</p></div>
+            <div style="--c:var(--red)"><b>WEAKNESSES</b><p>Skill 元数据、权限和评测不透明；安装/密钥治理偏工程化；官方、内置、社区混排会放大质量感知风险。</p></div>
+            <div style="--c:var(--blue)"><b>OPPORTUNITIES</b><p>Agent 成为新入口后，专业金融能力可以从“终端功能”变成跨平台可计量服务。</p></div>
+            <div style="--c:var(--amber)"><b>THREATS</b><p>Wind、iFinD、TDX 同步开放；通用 Agent 平台掌握入口；金融数据错误、违规荐股或外部 Skill 风险会反噬品牌。</p></div>
+          </div>
+          <div class="finding" style="--c:var(--blue)">
+            <div class="dim">ACTION MAPPING</div>
+            <p><b>SO：</b>把数据/账户优势包装为跨端服务；<b>WO：</b>公开评测、权限和成本；<b>ST：</b>用账户和专业数据提高切换成本；<b>WT：</b>外部 Skill 隔离、白名单和金融输出闸门。</p>
+          </div>
+        </div>
+        <div>
+          <h3>波特五力</h3>
+          <table class="forces">
+            <tr><th>力量</th><th>状态 / 趋势</th><th>关键动作</th></tr>
+            <tr><td>同业竞争</td><td>高 · 升温<div class="heat" style="--w:88%;--c:var(--red)"><i></i></div></td><td>从工具数竞争转向任务成功率与分发</td></tr>
+            <tr><td>上游议价</td><td>中 · 分化<div class="heat" style="--w:58%;--c:var(--orange)"><i></i></div></td><td>自有数据降依赖，第三方模型保持可替换</td></tr>
+            <tr><td>客户议价</td><td>中高 · 上升<div class="heat" style="--w:72%;--c:var(--amber)"><i></i></div></td><td>用个人知识、账户与持续任务提高留存</td></tr>
+            <tr><td>新进入者</td><td>中 · 上升<div class="heat" style="--w:62%;--c:var(--violet)"><i></i></div></td><td>门槛从建站转向数据合规和结果质量</td></tr>
+            <tr><td>替代品</td><td>高 · 上升<div class="heat" style="--w:82%;--c:var(--blue)"><i></i></div></td><td>通用 Agent + 单一 MCP 可替代“广场”</td></tr>
+          </table>
+          <p class="muted" style="font-size:10px;margin-top:8px"><b>最关键两力：</b>同业竞争、替代品。单纯堆 Skill 会迅速同质化，必须把数据、账户、持续服务和可信交付绑定起来。</p>
+        </div>
+      </div>
+      <div class="pestle">
+        <div class="signal"><b>P / L · 金融监管与适当性</b><p>自然语言分析更容易越过“信息工具—投资建议”边界。</p><span>监控：输出类型、风险揭示、适当性命中</span></div>
+        <div class="signal"><b>E · 积分与使用成本</b><p>统一积分便于经营，但用户需要知道一次任务为何消耗、价值是否可比较。</p><span>监控：单位成功任务成本、积分投诉</span></div>
+        <div class="signal"><b>S · 投资者信任</b><p>数据日期、来源和口径冲突会直接损害金融品牌。</p><span>监控：引用完整率、冲突拦截率</span></div>
+        <div class="signal"><b>T · MCP / Agent 标准演进</b><p>Streamable HTTP 增强互操作，但 Key、客户端兼容和供应链安全成为新门槛。</p><span>监控：兼容客户端、连接成功率、密钥事件</span></div>
+        <div class="signal"><b>L · 第三方 Skill 责任</b><p>“外部社区精选”仍需要作者、许可证、数据出境与运行权限证明。</p><span>监控：签名、许可证、权限变更、下架 SLA</span></div>
+        <div class="signal"><b>E · 算力与效率</b><p>按需加载能降低 Token 消耗，但只有路由可观测才能证明效率。</p><span>监控：路由命中率、降级率、Token / 成功任务</span></div>
+      </div>
+    </section>
+
+    <!-- 8. KEY FINDINGS -->
+    <section class="card">
+      <div class="section-head"><h2>🔎 Key Findings</h2><p>每条结论含事实、影响、动作和证据</p></div>
+      <div class="finding" style="--c:var(--blue)">
+        <div class="dim">F1 · PRODUCT MODEL</div>
+        <h3>“Skill”只是可销售的能力包装；Claw 才是用户持续使用的主产品</h3>
+        <p>官方把复杂部署压缩为一键部署，Claw 自动判断意图、选择 Skill 并完成任务。影响：没有 Agent 调度与持续任务，广场只会成为低频下载站。动作：盈米把 AI 小顾作为服务入口，把 Skill 市场下沉为能力供给层。</p>
+        <div class="evidence"><span class="pill blue">影响：高</span><span class="pill">SRC-P-003/007</span></div>
+      </div>
+      <div class="finding" style="--c:var(--green)">
+        <div class="dim">F2 · GROWTH LOOP</div>
+        <h3>东财用“跨端分发 → Key 身份 → 统一积分 → 账户权益”把外部流量带回经营体系</h3>
+        <p>ima、小艺、ArkClaw 等渠道扩大使用面，但领取 Key、积分和部分会员权益仍回到东方财富账号、Choice 权限或证券账户。动作：盈米每个外部分发服务都应有可归因的身份、额度、渠道和回流路径。</p>
+        <div class="evidence"><span class="pill green">影响：高</span><span class="pill">SRC-P-004/005/006</span></div>
+      </div>
+      <div class="finding" style="--c:var(--orange)">
+        <div class="dim">F3 · DISCOVERY UX</div>
+        <h3>搜索和分类已经可用，但卡片回答“是什么”，没有回答“能否安全完成我的任务”</h3>
+        <p>当前卡片呈现名称、来源、描述、标签、版本和日期；缺少权限、依赖、输入输出样例、覆盖资产、数据时点、单次成本、评测和失败边界。动作：建立服务卡强制字段与可比较的测试结果。</p>
+        <div class="evidence"><span class="pill amber">影响：中高</span><span class="pill">SRC-U-001/P-002</span></div>
+      </div>
+      <div class="finding" style="--c:var(--red)">
+        <div class="dim">F4 · SECURITY</div>
+        <h3>“一句话让 Agent 配置 MCP”降低接入成本，同时放大密钥和供应链风险</h3>
+        <p>官方安装文档覆盖 8 类 Agent，服务为 Streamable HTTP，并要求在配置中写入字面量 <code>em_api_key</code>；文档还包含自动检测环境变量和读取实际 Key 的指令。公开文档未说明细粒度 scope、过期、轮换或 OAuth。动作：不可照抄明文 Key 路线，应采用短期/可撤销/按服务授权。</p>
+        <div class="evidence"><span class="pill red">影响：高</span><span class="pill">SRC-P-009</span></div>
+      </div>
+      <div class="finding" style="--c:var(--red)">
+        <div class="dim">F5 · QUALITY</div>
+        <h3>平台广度不能代替单任务可靠性，路由与口径必须可观察</h3>
+        <p>010350 同题实测中，“综合诊基”未直接完成，降级到通用金融助手；结果同时出现负收益、最大回撤 0% 和盈利百分比 100% 等矛盾。动作：每次服务运行记录命中 Skill、降级原因、字段缺失、数据源、as_of 和一致性拦截。</p>
+        <div class="evidence"><span class="pill red">影响：高</span><span class="pill">SRC-U-002</span></div>
+      </div>
+      <div class="finding" style="--c:var(--violet)">
+        <div class="dim">F6 · MARKET GOVERNANCE</div>
+        <h3>“官方 / 内置 / 外部精选”只是来源标签，还不是用户可以信任的治理体系</h3>
+        <p>页面展示外部社区精选，并包含 skill-vetter 等安全工具；但公开页面未展示作者验证、许可证、签名、权限清单、评测分、安装量、问题率或下架机制。动作：盈米把这些治理证据做成卡片前台，而不是后台流程。</p>
+        <div class="evidence"><span class="pill violet">影响：中高</span><span class="pill">SRC-U-001/P-002</span></div>
+      </div>
+    </section>
+
+    <!-- 9. REUSABLE PATTERNS -->
+    <section class="card">
+      <div class="section-head"><h2>🧩 可复用模式</h2><p>值得学，但要按盈米的投顾边界重新设计</p></div>
+      <div class="g2">
+        <article class="pattern" style="--c:var(--blue)"><div class="no">01</div><h3>双层市场：服务广场 + 开发者能力库</h3><p>普通用户选择“要完成什么”，专业用户查看 Prompt / Skill / Agent / MCP。</p><ul><li>用户层：基金诊断、账户复盘、家庭规划、市场陪伴</li><li>开发者层：工具、参数、权限、SLA、版本、测试集</li><li>边界：公开服务不能暴露客户数据和自动交易能力</li></ul></article>
+        <article class="pattern" style="--c:var(--green)"><div class="no">02</div><h3>一个 Service ID 贯穿全生命周期</h3><p>同一服务对象连接模板、组件、Skill、Agent、MCP、权限、运行、计量和结算。</p><ul><li>解决同名 Skill、多渠道包、版本不可追溯</li><li>允许“方法被复制，数据各自授权”</li><li>支持按渠道、机构和用户分支计量</li></ul></article>
+        <article class="pattern" style="--c:var(--orange)"><div class="no">03</div><h3>把评测结果做成商品信息</h3><p>不只显示版本日期，还显示真实任务成功率和边界。</p><ul><li>必填：覆盖范围、输入输出样例、数据时点、单次成本</li><li>必填：权限、失败模式、降级链、引用完整率</li><li>金融专项：适当性、口径冲突、投资建议边界</li></ul></article>
+        <article class="pattern" style="--c:var(--violet)"><div class="no">04</div><h3>分发适配器，而非为每个渠道重做 Skill</h3><p>核心服务保持一致，针对 ChatGPT、OpenClaw、企业 Agent、APP 生成适配包。</p><ul><li>统一服务契约，渠道只改变认证与呈现</li><li>同一版本、权限和计量规则跨端复用</li><li>所有渠道回传匿名运行与成功事件</li></ul></article>
+      </div>
+    </section>
+
+    <!-- 10. IMPLEMENTATION ROADMAP -->
+    <section class="card">
+      <div class="section-head"><h2>🚀 盈米落地路线图</h2><p>Owner、依赖、复杂度与验收信号齐全</p></div>
+      <div class="bench-wrap">
+        <table class="roadmap-table" style="min-width:940px">
+          <thead><tr><th>优先级</th><th>动作</th><th>预期影响</th><th>复杂度</th><th>依赖</th><th>Owner</th><th>验收信号</th></tr></thead>
+          <tbody>
+            <tr><td><span class="pill p0">P0</span></td><td><b>定义 Service ID 与对象模型</b></td><td>统一能力、服务、渠道、运行和结算</td><td>中</td><td>OAP 台账 / 身份体系</td><td>OAP 产品 + 架构</td><td>首批 10 个服务全链路可追溯</td></tr>
+            <tr><td><span class="pill p0">P0</span></td><td><b>建立服务卡强制字段</b></td><td>用户可判断是否适用、可信和划算</td><td>低</td><td>产品/合规/投研字段共识</td><td>AI Hub 产品</td><td>字段完整率 100%</td></tr>
+            <tr><td><span class="pill p0">P0</span></td><td><b>上线发布与评测闸门</b></td><td>阻断错误、越权和不可复现服务</td><td>高</td><td>回归集、口径规则、沙箱</td><td>平台工程 + 风控</td><td>P0 用例通过才可公开</td></tr>
+            <tr><td><span class="pill p0">P0</span></td><td><b>重做认证与密钥策略</b></td><td>避免明文长期 Key 和越权调用</td><td>高</td><td>STARGATE / OAuth / 审计</td><td>安全 + 开放平台</td><td>scope、过期、撤销、轮换可用</td></tr>
+            <tr><td><span class="pill p1">P1</span></td><td><b>服务路由与降级可观测</b></td><td>区分原 Skill 成功与兜底结果</td><td>中</td><td>Agent 运行事件规范</td><td>Agent 平台</td><td>路由/降级/缺失字段可查询</td></tr>
+            <tr><td><span class="pill p1">P1</span></td><td><b>首批结果型服务货架</b></td><td>从工具展示转向用户任务交付</td><td>中</td><td>小顾、基金、策略、规划团队</td><td>场景产品 Owner</td><td>首轮成功率与复用率达标</td></tr>
+            <tr><td><span class="pill p1">P1</span></td><td><b>统一用量与成本事件</b></td><td>支撑套餐、渠道和单位经济模型</td><td>中</td><td>计量网关 / 账务口径</td><td>商业化 + 数据</td><td>可算单次成功任务毛利</td></tr>
+            <tr><td><span class="pill p2">P2</span></td><td><b>建设渠道适配器</b></td><td>一次建设，多端分发</td><td>高</td><td>服务契约稳定</td><td>开放平台</td><td>2 个外部 Agent 同版运行</td></tr>
+            <tr><td><span class="pill p2">P2</span></td><td><b>创作者与机构共建机制</b></td><td>扩大供给而不失控</td><td>高</td><td>审核、分成、版权、下架</td><td>生态运营 + 法务</td><td>首批白名单共建服务上线</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="timeline">
+        <div class="phase"><small>0–4 周 · 定规则</small><h3>对象模型 + 服务卡 + 发布闸门</h3><p>不先做大广场；先让 10 个服务可追溯、可评测、可撤销。</p></div>
+        <div class="phase"><small>5–10 周 · 跑闭环</small><h3>小顾入口 + 三个高频服务</h3><p>建议基金诊断、账户复盘、家庭健康体检；验证首次成功与复用。</p></div>
+        <div class="phase"><small>11–20 周 · 扩分发</small><h3>机构套餐 + 外部 Agent 适配</h3><p>只有单位经济与治理跑通后，再扩大创作者和渠道供给。</p></div>
+      </div>
+      <div class="finding" style="--c:var(--green);margin-top:14px">
+        <div class="dim">NORTH STAR</div>
+        <p><b>北极星不是 Skill 数量，而是“月度成功完成且被再次运行的服务数”。</b>配套指标：首次成功率、引用完整率、P0 冲突拦截率、降级率、每次成功任务成本、30 天复用率、服务→业务转化率。</p>
+      </div>
+    </section>
+
+    <!-- 11. SOURCE INDEX -->
+    <section class="card">
+      <div class="section-head"><h2>📎 Source Index</h2><p>U = 实测 / 用户材料；P = 公开资料；I = 盈米内部规划产物</p></div>
+      <div class="ev-grid">
+        <div class="ev"><b>SRC-U-001</b><p>2026-07-28 已登录页面实测：搜索、4 类来源、8 类分类、卡片元数据、API Key/下载/创建入口。</p><a href="https://ai.eastmoney.com/skills" target="_blank" rel="noopener">打开官网</a></div>
+        <div class="ev"><b>SRC-U-002</b><p>010350 三家金融 MCP/Skills 同题实测：东财路由降级与口径矛盾。</p><a href="https://clairku.github.io/skills/reports/eastmoney-mcp-skills-benchmark-2026-07-28/" target="_blank" rel="noopener">查看实测报告</a></div>
+        <div class="ev"><b>SRC-P-001</b><p>2026-03-13 新华财经：6 大核心场景、机构级 MCP 金融数据库。</p><a href="https://www.cnfin.com/cmjj-lb/detail/20260313/4386061_1.html" target="_blank" rel="noopener">查看来源</a></div>
+        <div class="ev"><b>SRC-P-002</b><p>2026-04-18 妙想官方：首批 31 款、五大战区、按需加载与跨 Skill 串联。</p><a href="https://caifuhao.eastmoney.com/news/20260418070114323888910" target="_blank" rel="noopener">查看来源</a></div>
+        <div class="ev"><b>SRC-P-003</b><p>2026-03-22 妙想官方：Claw 一键部署、默认内置 Skill、自动调度与私有数据结合。</p><a href="https://caifuhao2.eastmoney.com/news/20260322112623734222730" target="_blank" rel="noopener">查看来源</a></div>
+        <div class="ev"><b>SRC-P-004</b><p>2026-06-29 妙想官方：MCP 上线、Claw 开放、统一积分计量与权益来源。</p><a href="https://caifuhao2.eastmoney.com/news/20260629073004808426910" target="_blank" rel="noopener">查看来源</a></div>
+        <div class="ev"><b>SRC-P-005</b><p>2026-06-29 妙想官方：7 个 Skill 上线 ima，API Key + 安装 + Copilot 三步链路。</p><a href="https://caifuhao2.eastmoney.com/news/20260629133556643614140" target="_blank" rel="noopener">查看来源</a></div>
+        <div class="ev"><b>SRC-P-006</b><p>2026-04-28 妙想官方：8 项标准化 Skill 接入华为小艺 Claw。</p><a href="https://caifuhao2.eastmoney.com/news/20260428193151393164690" target="_blank" rel="noopener">查看来源</a></div>
+        <div class="ev"><b>SRC-P-007</b><p>2026-06-15 妙想官方：Claw 与 Skill 广场进入东方财富 APP，移动端管理技能库。</p><a href="https://caifuhao2.eastmoney.com/news/20260615183358143028600" target="_blank" rel="noopener">查看来源</a></div>
+        <div class="ev"><b>SRC-P-008</b><p>2026-03-28 官方会员说明：旧版按 Skill 日调用次数和证券账户权益扩容。</p><a href="https://caifuhao.eastmoney.com/news/20260328140418577911080" target="_blank" rel="noopener">查看来源</a></div>
+        <div class="ev"><b>SRC-P-009</b><p>妙想 MCP 安装文档：Streamable HTTP、em_api_key、8 类 Agent 与配置方式。</p><a href="https://mxapi.eastmoney.com/mxds/doc/mcp-install.md" target="_blank" rel="noopener">查看官方文档</a></div>
+        <div class="ev"><b>SRC-P-010</b><p>通达信 TDX SkillHub：分类、自然语言安装提示、内置技能边界与源码视图。</p><a href="https://www.tdx.com.cn/skillhub/" target="_blank" rel="noopener">查看竞品</a></div>
+        <div class="ev"><b>SRC-P-011</b><p>Wind AIFin Market：金融能力市场、MCP 协议与主流 Agent 兼容。</p><a href="https://aifinmarket.wind.com.cn/" target="_blank" rel="noopener">查看竞品</a></div>
+        <div class="ev"><b>SRC-P-012</b><p>同花顺 iFinD：MCP、Skills、投研 Agent 和定时自动任务公开说明。</p><a href="https://finance.sina.com.cn/stock/relnews/cn/2026-03-30/doc-inhsuvau2607259.shtml" target="_blank" rel="noopener">查看公开披露</a></div>
+        <div class="ev"><b>SRC-I-001/002</b><p>盈米 AI 实验室服务组件编排 Demo 与 OAP 进展/规划材料；仅作我方方向参照，不代表上线事实。</p><a href="https://clairku.github.io/qieman-product-research-library/pages/ai-lab-demo/" target="_blank" rel="noopener">AI 实验室 Demo</a> · <a href="https://clairku.github.io/qieman-product-research-library/pages/oap/oap-progress-and-roadmap-2026-07-24.html" target="_blank" rel="noopener">OAP 规划</a></div>
+      </div>
+    </section>
+
+    <!-- 12. DISCLAIMER -->
+    <section class="card disc">
+      <strong>⚠ 免责声明与事实边界</strong>
+      <ul>
+        <li>本报告用于内部竞品研究和产品决策，不构成投资建议、采购承诺或对供应商整体能力的最终审计。</li>
+        <li>“未在公开资料中披露”不等于“产品一定不具备”；需在正式商务、技术和安全尽调中补证。</li>
+        <li>2026-07-28 页面实测只证明当时可见状态；Skill 数量、额度、积分与渠道可能继续变化。</li>
+        <li>盈米 AI 实验室和 OAP 内容是规划/Demo 参照，不能作为已上线、已批准、已有收入或已通过合规验收的证据。</li>
+        <li>页面密码为前端提示，源码可被查看；敏感材料应改用具备服务端身份鉴权的内部文档系统。</li>
+      </ul>
+    </section>
+    <footer>Prepared for Clair · Competitive Product Research · 2026-07-28 · 15 evidence groups</footer>
+  </main>
+
+  <script>
+    const PASSWORD="2026";
+    const gate=document.getElementById("gate");
+    const report=document.getElementById("report");
+    const input=document.getElementById("password");
+    const error=document.getElementById("gate-error");
+    function unlock(){
+      if(input.value===PASSWORD){
+        gate.classList.add("hidden");
+        report.classList.remove("hidden");
+        sessionStorage.setItem("eastmoney-platform-report-unlocked","1");
+        window.scrollTo({top:0});
+      }else{
+        error.textContent="密码不正确，请重试。";
+        input.select();
+      }
+    }
+    document.getElementById("unlock").addEventListener("click",unlock);
+    input.addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});
+    if(sessionStorage.getItem("eastmoney-platform-report-unlocked")==="1"){
+      gate.classList.add("hidden");
+      report.classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
