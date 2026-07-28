@@ -1,403 +1,223 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="robots" content="noindex,nofollow">
-  <title>三家金融 MCP / Skills 服务深度对比｜010350 同题实测</title>
-  <style>
-    :root{
-      --ink:#14233b;--muted:#627086;--line:#dce4ef;--paper:#fff;--soft:#f4f7fb;
-      --g:#2763d7;--y:#f08b3e;--e:#d9373e;--ok:#16825d;--warn:#a96100;--bad:#b4232c;
-      --shadow:0 18px 44px rgba(25,44,78,.10);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:linear-gradient(180deg,#eef4fb 0,#f9fbfd 28rem,#f5f7fa 100%);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.65}
-    a{color:var(--g);text-decoration:none}
-    a:hover{text-decoration:underline}
-    button,input{font:inherit}
-    .hidden{display:none!important}
-    #gate{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 15% 20%,#315b98 0,transparent 28%),radial-gradient(circle at 85% 10%,#a9343c 0,transparent 24%),#0e1930;display:grid;place-items:center;padding:24px}
-    .gate-card{width:min(440px,100%);background:rgba(255,255,255,.96);border-radius:28px;padding:34px;box-shadow:0 30px 90px rgba(0,0,0,.35)}
-    .gate-kicker{font-size:12px;letter-spacing:.16em;color:var(--g);font-weight:800}
-    .gate-card h1{font-size:28px;line-height:1.25;margin:10px 0 8px}
-    .gate-card p{color:var(--muted);margin:0 0 20px}
-    .gate-row{display:flex;gap:10px}
-    .gate-row input{min-width:0;flex:1;border:1px solid var(--line);border-radius:12px;padding:12px 14px;outline:none}
-    .gate-row input:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(39,99,215,.12)}
-    .gate-row button{border:0;border-radius:12px;background:var(--ink);color:#fff;padding:12px 18px;font-weight:700;cursor:pointer}
-    .gate-error{height:22px;margin-top:8px;color:var(--bad);font-size:13px}
-    .gate-note{font-size:12px!important;margin-top:12px!important}
-    .topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(220,228,239,.88)}
-    .topbar-inner{max-width:1180px;margin:auto;display:flex;align-items:center;gap:20px;padding:10px 20px}
-    .brand{font-weight:900;white-space:nowrap}
-    nav{display:flex;gap:16px;overflow:auto;white-space:nowrap;font-size:13px}
-    nav a{color:var(--muted)}
-    main{max-width:1180px;margin:auto;padding:34px 20px 70px}
-    .hero{background:linear-gradient(135deg,#102242 0%,#173a70 57%,#602c36 100%);color:#fff;border-radius:30px;padding:40px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-    .hero:after{content:"";position:absolute;right:-70px;top:-90px;width:290px;height:290px;border:1px solid rgba(255,255,255,.18);border-radius:50%;box-shadow:0 0 0 48px rgba(255,255,255,.04),0 0 0 98px rgba(255,255,255,.025)}
-    .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;opacity:.76}
-    .hero h1{font-size:clamp(32px,5vw,62px);line-height:1.06;margin:14px 0 18px;max-width:900px}
-    .hero .lead{max-width:900px;font-size:18px;opacity:.9}
-    .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-    .pill{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:800;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16)}
-    .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
-    section{margin-top:30px}
-    .section-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 8px 26px rgba(30,52,82,.06)}
-    .section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:20px}
-    .section-head h2{font-size:28px;line-height:1.2;margin:0}
-    .section-head p{margin:0;color:var(--muted);max-width:620px;font-size:14px}
-    .conclusion{font-size:23px;line-height:1.5;margin:0}
-    .conclusion strong{background:linear-gradient(transparent 58%,#ffe2bb 58%)}
-    .provider-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .provider{border:1px solid var(--line);border-radius:20px;padding:22px;position:relative;overflow:hidden}
-    .provider:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--c)}
-    .provider .label{font-size:12px;color:var(--c);font-weight:900;letter-spacing:.08em}
-    .provider h3{font-size:22px;margin:8px 0}
-    .provider p{margin:0;color:var(--muted);font-size:14px}
-    .provider .score{font-size:42px;font-weight:900;line-height:1;margin:18px 0 6px}
-    .provider .score small{font-size:14px;color:var(--muted)}
-    .provider .best{display:inline-block;margin-top:12px;padding:5px 9px;background:var(--soft);border-radius:8px;font-size:12px;font-weight:800}
-    .g{--c:var(--g)}.y{--c:var(--y)}.e{--c:var(--e)}
-    .callout{border-left:5px solid var(--c,var(--g));background:var(--soft);border-radius:14px;padding:16px 18px}
-    .callout h3{margin:0 0 4px;font-size:17px}.callout p{margin:0;color:var(--muted)}
-    .test-route{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:10px}
-    .route-box{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}
-    .route-box b{display:block;margin-bottom:5px}.route-box span{color:var(--muted);font-size:13px}
-    .route-box.fail{border-color:#f0b8bc;background:#fff7f7}.route-box.ok{border-color:#acd9ca;background:#f5fffb}
-    .arrow{display:grid;place-items:center;color:#94a1b4;font-size:24px}
-    .status{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:800}
-    .status.ok{background:#e8f7f1;color:var(--ok)}.status.warn{background:#fff3df;color:var(--warn)}.status.bad{background:#fff0f1;color:var(--bad)}
-    .quality-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-    .quality{border-radius:16px;padding:16px;border:1px solid}
-    .quality b{display:block;font-size:24px}.quality span{font-size:13px}
-    .quality.bad{background:#fff5f5;border-color:#f2c4c7;color:#8e1f27}
-    .quality.warn{background:#fff9ef;border-color:#f0d3a5;color:#7a4a00}
-    .quality.ok{background:#f0fbf7;border-color:#b7decf;color:#166747}
-    .chart-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}
-    .canvas-wrap{position:relative;min-height:440px;display:grid;place-items:center}
-    canvas{max-width:100%;height:auto}
-    .legend{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:8px;font-size:13px}
-    .legend span{display:flex;align-items:center;gap:7px}.legend i{width:12px;height:12px;border-radius:3px;background:var(--c)}
-    .score-list{display:grid;gap:12px}
-    .score-row{display:grid;grid-template-columns:86px 1fr 34px;align-items:center;gap:10px;font-size:13px}
-    .bar{height:10px;background:#e9eef5;border-radius:999px;overflow:hidden}.bar i{display:block;height:100%;border-radius:inherit;background:var(--c)}
-    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:16px}
-    table{width:100%;border-collapse:collapse;min-width:900px;font-size:13px}
-    th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-    th{position:sticky;top:0;background:#f3f6fa;z-index:1;font-size:12px;color:#536176}
-    tr:last-child td{border-bottom:0}
-    .winner{font-weight:900;color:var(--ok)}
-    .weak{color:var(--bad)}
-    .note{color:var(--muted);font-size:12px}
-    .cross-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .metric{border:1px solid var(--line);border-radius:16px;padding:17px;background:linear-gradient(180deg,#fff,#f8fafc)}
-    .metric .k{font-size:12px;color:var(--muted)}.metric .v{font-size:24px;font-weight:900;margin:4px 0}.metric .s{font-size:12px;color:var(--muted)}
-    .scenario-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .scenario{border:1px solid var(--line);border-radius:18px;padding:18px}
-    .scenario .icon{font-size:26px}.scenario h3{margin:8px 0 4px}.scenario p{margin:0;color:var(--muted);font-size:13px}.scenario b{display:block;margin-top:12px}
-    .workflow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .step{border-radius:18px;padding:20px;color:#fff;background:var(--c);min-height:180px}
-    .step small{font-weight:900;letter-spacing:.1em;opacity:.8}.step h3{font-size:21px;margin:10px 0}.step p{margin:0;opacity:.9;font-size:13px}
-    .priority{display:grid;grid-template-columns:90px 130px 1fr;gap:10px;align-items:start;padding:14px 0;border-bottom:1px solid var(--line)}
-    .priority:last-child{border-bottom:0}
-    .p0,.p1,.p2{font-size:12px;font-weight:900;padding:4px 8px;border-radius:8px;text-align:center}
-    .p0{background:#fff0f1;color:var(--bad)}.p1{background:#fff3df;color:var(--warn)}.p2{background:#eef4ff;color:var(--g)}
-    details{border-top:1px solid var(--line);padding:14px 0}details:first-child{border-top:0}
-    summary{cursor:pointer;font-weight:800}details p{color:var(--muted);font-size:13px}
-    footer{margin-top:30px;color:var(--muted);font-size:12px;text-align:center}
-    @media(max-width:900px){
-      .provider-grid,.quality-grid,.scenario-grid,.workflow,.cross-grid{grid-template-columns:1fr 1fr}
-      .chart-grid{grid-template-columns:1fr}.test-route{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}
-      .hero{padding:30px 24px}.section-card{padding:22px}.section-head{display:block}.section-head p{margin-top:8px}
-    }
-    @media(max-width:600px){
-      main{padding:20px 12px 56px}.topbar-inner{padding:9px 12px}.brand{font-size:13px}
-      .hero{border-radius:22px;padding:28px 20px}.hero .lead{font-size:16px}
-      .provider-grid,.quality-grid,.scenario-grid,.workflow,.cross-grid{grid-template-columns:1fr}
-      .section-card{border-radius:20px;padding:19px}.section-head h2{font-size:24px}.conclusion{font-size:19px}
-      .priority{grid-template-columns:60px 90px 1fr;font-size:13px}.canvas-wrap{min-height:340px}
-    }
-    @media print{
-      #gate,.topbar{display:none!important}body{background:#fff}.hero,.section-card{box-shadow:none;break-inside:avoid}
-      main{max-width:none;padding:0}.hero{border-radius:0}.table-wrap{overflow:visible}table{min-width:0;font-size:10px}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="恒生聚源、盈米且慢与东方财富妙想三家金融 MCP / Skills 服务的统一任务、统一口径、单基金实测深度对比。">
+<meta property="og:title" content="三家金融 MCP / Skills 服务最完整对比｜010350 同题实测">
+<meta property="og:description" content="三份独立报告、18维能力矩阵、数据一致性审计、服务形态与选型路线图。">
+<link rel="icon" href="data:,">
+<title>三家金融 MCP / Skills 服务最完整对比｜010350 同题实测</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f2f5f9;color:#182230;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.62}
+:root{--jy:#d79d35;--ym:#13715b;--dc:#e9382d;--blue:#175cd3;--violet:#6938ef;--ink:#101828;--muted:#667085;--line:#e4e9f0;--card:#fff;--green:#079455;--amber:#dc6803;--red:#b42318;--shadow:0 10px 32px rgba(16,24,40,.07)}
+a{color:var(--blue)}.hidden{display:none!important}.gate{position:fixed;inset:0;z-index:99;display:grid;place-items:center;padding:18px;background:radial-gradient(circle at 15% 15%,#eaf4ff,transparent 40%),radial-gradient(circle at 85% 80%,#fff1f0,transparent 38%),#f7f9fc}.gate-card{width:min(440px,100%);background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px;box-shadow:0 30px 90px rgba(16,24,40,.16)}.tri-logo{display:flex;gap:7px}.tri-logo i{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:#fff;font-style:normal;font-weight:900}.tri-logo i:nth-child(1){background:var(--jy)}.tri-logo i:nth-child(2){background:var(--ym)}.tri-logo i:nth-child(3){background:var(--dc)}.gate h1{font-size:23px;margin:18px 0 6px}.gate p{margin:0 0 18px;color:var(--muted);font-size:14px}.gate-row{display:flex;gap:9px}.gate input{min-width:0;flex:1;border:1px solid #cfd6e2;border-radius:12px;padding:12px 14px;font-size:16px}.gate button{border:0;border-radius:12px;padding:0 18px;background:var(--ink);color:#fff;font-weight:700}.gate-err{color:var(--red);font-size:13px;min-height:22px;margin-top:8px}
+.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav-in{max-width:1180px;margin:auto;padding:10px 20px;display:flex;gap:12px;align-items:center}.brand{font-weight:800;color:var(--ink);text-decoration:none}.links{margin-left:auto;display:flex;gap:5px;overflow:auto}.links a{white-space:nowrap;padding:7px 9px;border-radius:9px;text-decoration:none;color:#475467;font-size:12px}.links a:hover{background:#f2f4f7}
+.wrap{max-width:1180px;margin:auto;padding:24px 20px 64px}.hero{position:relative;overflow:hidden;border-radius:28px;padding:38px;background:linear-gradient(125deg,#0b1f3a 0,#143c68 48%,#2369a5 100%);color:#fff;box-shadow:0 26px 70px rgba(20,60,104,.22)}.hero:before{content:"";position:absolute;right:-120px;top:-190px;width:480px;height:480px;border-radius:50%;border:95px solid rgba(255,255,255,.07)}.eyebrow{font-size:11px;letter-spacing:2px;opacity:.68}.hero h1{position:relative;font-size:36px;line-height:1.2;margin:10px 0 8px;max-width:860px}.hero p{position:relative;max-width:800px;color:#d6e8f8;margin:0}.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.tag{padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.1);font-size:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:23px;margin:15px 0;box-shadow:var(--shadow)}.card h2{margin:0 0 3px;font-size:21px;color:var(--ink)}.sub{font-size:12px;color:var(--muted);margin-bottom:16px}.verdict{border:0;background:linear-gradient(135deg,#eff8ff,#f5f3ff)}.verdict .big{font-size:19px;font-weight:750;color:#102a43;line-height:1.55}.verdict ul{margin-bottom:0}
+.providers{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:14px}.provider{position:relative;overflow:hidden;border-radius:18px;padding:20px;background:#fff;border:1px solid var(--line)}.provider:before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--c)}.provider h3{margin:4px 0 2px;font-size:18px}.provider .role{font-size:12px;color:var(--muted)}.score{display:flex;align-items:end;gap:5px;margin:14px 0}.score b{font-size:34px;line-height:1;color:var(--c)}.score small{color:var(--muted)}.provider ul{font-size:12px;padding-left:17px}.provider a{display:inline-block;text-decoration:none;font-size:12px;font-weight:700;padding:7px 10px;border-radius:10px;background:#f2f4f7}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:14px 0}.kpi{border:1px solid var(--line);border-radius:16px;padding:17px;background:#fff}.kpi small{display:block;color:var(--muted);font-size:11px}.kpi b{display:block;font-size:24px;color:var(--ink);margin:2px 0}.kpi span{font-size:11px;color:var(--muted)}.up{color:#b42318!important}.down{color:#067647!important}
+.callout{padding:15px 17px;border-radius:15px;border-left:4px solid;margin:11px 0}.callout.blue{background:#eff8ff;border-color:var(--blue)}.callout.red{background:#fff1f0;border-color:var(--red)}.callout.amber{background:#fffaeb;border-color:var(--amber)}.callout.green{background:#ecfdf3;border-color:var(--green)}.callout strong{display:block;margin-bottom:3px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}th,td{text-align:left;padding:9px 10px;border-bottom:1px solid #edf0f4;vertical-align:top}th{position:sticky;top:49px;background:#f8fafc;color:#475467;font-size:10.5px;letter-spacing:.35px;z-index:2}tr:last-child td{border-bottom:0}.scroll{overflow:auto;max-height:none}.jy{color:#9b6300}.ym{color:#08634f}.dc{color:#c82f27}.pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:700}.p-ok{background:#dcfae6;color:#067647}.p-mid{background:#fef0c7;color:#b54708}.p-no{background:#fee4e2;color:#b42318}.p-jy{background:#fff4d6;color:#8c5a00}.p-ym{background:#dff6ee;color:#08634f}.p-dc{background:#ffe3e1;color:#b42318}.p-tie{background:#e8eef7;color:#344054}
+.truth{display:grid;grid-template-columns:1.15fr .85fr;gap:13px}.insights{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.insight{padding:15px;border-radius:15px;background:#f8fafc;border:1px solid var(--line)}.insight b{display:block;color:var(--ink);margin-bottom:3px}.insight span{font-size:12px;color:var(--muted)}
+.score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.score-card{border:1px solid var(--line);border-radius:16px;padding:17px}.score-card h3{margin:0 0 12px}.metric{display:grid;grid-template-columns:110px 1fr 30px;gap:8px;align-items:center;margin:9px 0;font-size:11px}.track{height:9px;background:#eef2f6;border-radius:99px;overflow:hidden}.track i{display:block;height:100%;border-radius:99px;background:var(--c)}
+.reports{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.report-link{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:17px;padding:18px;background:#fff;transition:.18s}.report-link:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.report-link small{color:var(--muted)}.report-link b{display:block;font-size:16px;margin:4px 0}.report-link span{font-size:12px;color:#475467}
+.shape{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.shape article{border-radius:17px;border:1px solid var(--line);padding:17px;background:#f8fafc}.shape h3{margin:0 0 8px}.shape dl{margin:0;font-size:12px}.shape dt{font-weight:700;margin-top:8px}.shape dd{margin:2px 0 0;color:var(--muted)}
+.workflow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.step{position:relative;padding:15px;border-radius:15px;background:#f8fafc;border:1px solid var(--line);font-size:12px}.step small{display:block;color:var(--muted)}.step b{display:block;margin:4px 0}.step:after{content:"→";position:absolute;right:-10px;top:40%;z-index:3;color:#98a2b3}.step:last-child:after{display:none}
+.roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.action{border:1px solid var(--line);border-radius:16px;padding:17px}.action small{color:var(--muted)}.action h3{font-size:15px;margin:5px 0}.action p{font-size:12px;color:#475467}.owner{display:inline-block;background:#f2f4f7;border-radius:999px;padding:3px 8px;font-size:10px}
+.source-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.source{border:1px solid var(--line);border-radius:13px;padding:12px;font-size:11px}.source b{display:block;color:var(--blue)}.foot{text-align:center;color:#98a2b3;font-size:11px;padding:20px}
+@media(max-width:900px){.providers,.reports,.score-grid,.shape{grid-template-columns:1fr}.truth{grid-template-columns:1fr}.workflow{grid-template-columns:1fr}.step:after{content:"↓";right:50%;top:auto;bottom:-16px}.roadmap{grid-template-columns:1fr}.source-grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.wrap{padding:14px 9px 50px}.hero,.card{border-radius:18px;padding:18px}.hero h1{font-size:27px}.links{display:none}.insights{grid-template-columns:1fr}.kpis{gap:8px}.kpi{padding:13px}.kpi b{font-size:21px}th{top:0}.metric{grid-template-columns:96px 1fr 26px}}
+@media print{.gate,.nav{display:none!important}.wrap{max-width:none;padding:0}.card,.hero{box-shadow:none;break-inside:avoid}.scroll{overflow:visible}}
+</style>
 </head>
 <body>
-  <div id="gate">
-    <div class="gate-card">
-      <div class="gate-kicker">PRIVATE RESEARCH</div>
-      <h1>三家金融服务深度对比</h1>
-      <p>输入访问密码查看 010350 同题实测与选型建议。</p>
-      <div class="gate-row">
-        <input id="password" type="password" inputmode="numeric" autocomplete="current-password" placeholder="访问密码" aria-label="访问密码">
-        <button id="unlock">进入报告</button>
-      </div>
-      <div id="gate-error" class="gate-error" role="alert"></div>
-      <p class="gate-note">说明：这是前端访问提示，不等同于服务端安全鉴权。</p>
+<div id="gate" class="gate"><div class="gate-card"><div class="tri-logo"><i>聚</i><i>盈</i><i>东</i></div><h1>三家金融服务深度对比</h1><p>输入密码查看 010350 同题实测、数据审计与选型建议。</p><div class="gate-row"><input id="pw" type="password" inputmode="numeric" placeholder="访问密码"><button id="go">进入</button></div><div id="err" class="gate-err"></div></div></div>
+<div id="report" class="hidden">
+<nav class="nav"><div class="nav-in"><a class="brand" href="#top">三家金融 MCP / Skills 对比</a><div class="links"><a href="#reports">独立报告</a><a href="#truth">基金事实</a><a href="#matrix">能力矩阵</a><a href="#quality">口径审计</a><a href="#service">服务形态</a><a href="#decision">选型</a><a href="#sources">来源</a></div></div></nav>
+<main id="top" class="wrap">
+  <header class="hero">
+    <div class="eyebrow">UNIFIED TASK · THREE PROVIDERS · EVIDENCE-TRACEABLE</div>
+    <h1>基金诊断工具能力对比报告<br>聚源 × 盈米 × 东方财富</h1>
+    <p>同一只基金、同一组 14 项任务、三份独立输出。把原两家模板、刚完成的服务对比和东财真实调用整合为一份可选型、可复核、可落地的最终报告。</p>
+    <div class="hero-tags"><span class="tag">景顺长城品质长青混合A · 010350</span><span class="tag">净值截至 2026-07-22</span><span class="tag">持仓/规模主口径 2026-06-30</span><span class="tag">18 维能力矩阵</span><span class="tag">更新 2026-07-28</span></div>
+  </header>
+
+  <section class="card verdict">
+    <h2>一句话结论</h2>
+    <div class="big">三家不是同一物种：<span class="jy">聚源是专业数据底座</span>，<span class="ym">盈米是投顾诊断与交付服务</span>，<span class="dc">东财是“金融内容 + Agent + Skill/Key 分发”入口</span>。做深度研究选聚源，做客户服务选盈米，做低门槛分发与快速成文可选东财；生产级最优解不是三选一，而是“聚源补深度、盈米做解释与交付、第三源做冲突校验”。</div>
+    <ul>
+      <li><b>聚源贡献最关键的研究洞察：</b>完整历任经理、20 期规模申赎、9 期持有人结构、逐季重仓与周频选股/择时。</li>
+      <li><b>盈米贡献最完整的投顾语义：</b>风险适配、同类百分位、估值、市场温度、Brinson、交易状态、图表/PDF 与场景 Skill。</li>
+      <li><b>东财贡献最低门槛的分发路径：</b>账号领 Key、Skill 广场、Claw/外部 Agent；但本次发生路由降级，且核心字段出现内部矛盾。</li>
+    </ul>
+  </section>
+
+  <section class="providers">
+    <article class="provider" style="--c:var(--jy)"><h3>恒生聚源 Gildata</h3><div class="role">专业数据库型 · 约 480 个工具</div><div class="score"><b>80</b><small>/100 · 本场景综合分</small></div><ul><li>数据深度与历史序列第一</li><li>原子返回，需自行清洗解释</li><li>适合研究、尽调、量化</li></ul><a href="https://mcp.edgeone.site/share/FoBzYWjyHsr4oTfL0_VRI" target="_blank" rel="noopener">打开独立报告</a></article>
+    <article class="provider" style="--c:var(--ym)"><h3>盈米且慢 MCP + Skill</h3><div class="role">投顾服务型 · 约 70 个工具 + Skills</div><div class="score"><b>86</b><small>/100 · 本场景综合分</small></div><ul><li>解释、适配与交付第一</li><li>深水区历史数据不足</li><li>适合客户报告与组合服务</li></ul><a href="https://mcp.edgeone.site/share/j0VenJgH1qGXT5Brp8_-u" target="_blank" rel="noopener">打开独立报告</a></article>
+    <article class="provider" style="--c:var(--dc)"><h3>东方财富妙想</h3><div class="role">入口分发型 · Skill + Key + Agent</div><div class="score"><b>62</b><small>/100 · 本场景综合分</small></div><ul><li>接入与快速成文效率高</li><li>指定诊基 Skill 本次降级</li><li>缺失项多且有 P0 口径冲突</li></ul><a href="../eastmoney-fund-report-010350-2026-07-28/" target="_blank" rel="noopener">打开东财独立报告</a></article>
+  </section>
+
+  <section id="reports" class="card">
+    <h2>三份独立基金报告</h2><div class="sub">先看每家自己如何完成同一任务，再看统一矩阵；避免用汇总报告替代原始证据。</div>
+    <div class="reports">
+      <a class="report-link" href="https://mcp.edgeone.site/share/FoBzYWjyHsr4oTfL0_VRI" target="_blank" rel="noopener"><small>16 个接口 · 2026-07-23</small><b class="jy">聚源版 010350 深度诊断</b><span>历任经理、申赎、持有人、逐季持仓、选股择时与风格序列。</span></a>
+      <a class="report-link" href="https://mcp.edgeone.site/share/j0VenJgH1qGXT5Brp8_-u" target="_blank" rel="noopener"><small>18 次工具调用，2 项无数据 · 2026-07-23</small><b class="ym">盈米版 010350 深度诊断</b><span>四维能力、估值与市场温度、Brinson、经理观点、交易和适配。</span></a>
+      <a class="report-link" href="../eastmoney-fund-report-010350-2026-07-28/" target="_blank" rel="noopener"><small>网页真实调用 · 2026-07-28</small><b class="dc">东财妙想版 010350 深度诊断</b><span>14 章原始结果、无数据项、路由降级与字段一致性审计。</span></a>
     </div>
-  </div>
+  </section>
 
-  <div id="report" class="hidden">
-    <header class="topbar">
-      <div class="topbar-inner">
-        <div class="brand">010350 · 三方实测</div>
-        <nav>
-          <a href="#verdict">结论</a><a href="#east-test">东财实测</a><a href="#matrix">能力矩阵</a>
-          <a href="#crosscheck">数据核验</a><a href="#selection">选型</a><a href="#sources">证据</a>
-        </nav>
+  <section class="card">
+    <h2>统一测试任务与可比性</h2><div class="sub">三家均测试 010350，但日期、同类池与工具形态不同；报告只比较实际返回，不把未调用能力算作成功。</div>
+    <div class="kpis">
+      <div class="kpi"><small>测试基金</small><b>010350</b><span>景顺长城品质长青混合A</span></div>
+      <div class="kpi"><small>统一任务</small><b>14 项</b><span>档案→适配完整诊断</span></div>
+      <div class="kpi"><small>能力矩阵</small><b>18 维</b><span>数据 + 服务 + 交付</span></div>
+      <div class="kpi"><small>证据分层</small><b>U / P</b><span>实测结果 / 官方公开材料</span></div>
+    </div>
+    <div class="callout blue"><strong>可比口径</strong>核心事实以 2026-07-22 净值与 2026-06-30 定期报告为主。收益、回撤、规模、经理回报必须同时展示时间窗、份额口径、指标频率和同类池。</div>
+  </section>
+
+  <section id="truth" class="card">
+    <h2>三源合并后，这只基金的可信事实</h2><div class="sub">这里不是再做一份投资建议，而是展示多源组合能得到什么单源拿不到的事实链。</div>
+    <div class="truth">
+      <div class="insights">
+        <div class="insight"><b>换帅改命</b><span>江科宏 -13.11%、刘苏 -8.34%；农冰立 2023-07-06 接任后约 +128%—130%。完整历史仅聚源返回。</span></div>
+        <div class="insight"><b>高收益换高波动</b><span>近3年 +126.29%，但年化波动约 29.95%—29.97%，最大回撤 -24.65%。聚源与盈米一致。</span></div>
+        <div class="insight"><b>AI 硬件高度集中</b><span>前十大占净值 81.82%；聚源显示电子+通信约 74%，盈米显示 CR3 71.81%。行业分类口径不同，集中结论一致。</span></div>
+        <div class="insight"><b>资金高位涌入后连续赎回</b><span>A类 2025Q3 规模冲至 71.1 亿，随后连续三季净赎回；东财至少复现最近两季份额下降。</span></div>
+        <div class="insight"><b>机构化筹码</b><span>机构占比从 2023 年末 0% 升至 2025 年末 64.67%。只有聚源返回结构序列。</span></div>
+        <div class="insight"><b>超额主要来自行业配置</b><span>盈米近1年 Brinson：行业 +7.44%、选股 +3.57%、总超额 +11.01%；聚源历史归因方向一致。</span></div>
       </div>
-    </header>
+      <div>
+        <div class="kpi"><small>近1年收益 · 双源一致</small><b class="up">+30.80%</b><span>聚源 = 盈米</span></div>
+        <div class="kpi" style="margin-top:9px"><small>近3年收益 · 双源一致</small><b class="up">+126.29%</b><span>聚源 = 盈米</span></div>
+        <div class="kpi" style="margin-top:9px"><small>近1年最大回撤 · 双源一致</small><b class="down">-20.37%</b><span>东财短窗口“0%”不可混用</span></div>
+        <div class="callout amber"><strong>组合使用的真正价值</strong>聚源解释“为什么”，盈米解释“对投资者意味着什么”，第三源负责发现口径冲突。</div>
+      </div>
+    </div>
+  </section>
 
-    <main>
-      <section class="hero">
-        <div class="eyebrow">FINANCIAL MCP / SKILLS BENCHMARK · 2026-07-28</div>
-        <h1>三家金融 MCP / Skills 服务深度对比</h1>
-        <p class="lead">以景顺长城品质长青混合A（010350）为同题样本，对比恒生聚源 Gildata MCP、盈米且慢 MCP + Skill、东方财富妙想 Skills。不是功能清单，而是“同一任务能交付到什么程度”。</p>
-        <div class="hero-meta">
-          <span class="pill"><span class="dot" style="color:#6ea0ff"></span>聚源：16 接口实测</span>
-          <span class="pill"><span class="dot" style="color:#ffae70"></span>盈米：18 工具实测，2 项无数据</span>
-          <span class="pill"><span class="dot" style="color:#ff7278"></span>东财：真实登录 + API Key + 网页调用</span>
-          <span class="pill">数据截止：2026-07-28</span>
-        </div>
-      </section>
+  <section id="matrix" class="card">
+    <h2>18 维能力覆盖矩阵</h2><div class="sub">✔ 完整；◐ 部分/需加工；✘ 本次无数据或未完成。优胜方只针对本次 010350 任务。</div>
+    <div class="scroll"><table>
+      <thead><tr><th style="min-width:150px">诊断维度</th><th style="min-width:235px" class="jy">聚源 Gildata</th><th style="min-width:235px" class="ym">盈米且慢</th><th style="min-width:235px" class="dc">东方财富妙想</th><th style="min-width:80px">本项优胜</th></tr></thead>
+      <tbody>
+        <tr><td>1. 基础档案</td><td>✔ 托管、投资范围、费率、基准完整</td><td>◐ 类型、基准、交易信息；档案深度一般</td><td>◐ 全称、类型、成立、基准；无托管/投资范围</td><td><span class="pill p-jy">聚源</span></td></tr>
+        <tr><td>2. 阶段业绩</td><td>✔ 收益、同类均值、基准、精确排名</td><td>✔ 收益、同类均值、分位段</td><td>◐ 主要给短窗口收益与三个排名，窗口不完全统一</td><td><span class="pill p-jy">聚源</span></td></tr>
+        <tr><td>3. 风险指标</td><td>✔ 多周期、精确排名、动态回撤、VaR</td><td>✔ 四维百分位、风险评分、R²、修复能力</td><td>◐ 波动/Sharpe/Treynor/Beta；最大回撤冲突</td><td><span class="pill p-tie">聚源/盈米</span></td></tr>
+        <tr><td>4. 个股持仓</td><td>✔ 逐季市值、占比、变动、季涨跌、PE</td><td>◐ 组合级指标为主，未给完整个股表</td><td>◐ 前十名称/占比；无市值、变动、估值</td><td><span class="pill p-jy">聚源</span></td></tr>
+        <tr><td>5. 行业配置</td><td>✔ 申万口径 6 期演变</td><td>✔ 中信口径最新期、CR1/3/5、板块标签</td><td>✘ 仅“TMT+消费”文字，无权重</td><td><span class="pill p-tie">聚源/盈米</span></td></tr>
+        <tr><td>6. 历任经理</td><td>✔ 三任经理完整任期与业绩</td><td>✘ 仅现任</td><td>✘ 仅现任</td><td><span class="pill p-jy">聚源</span></td></tr>
+        <tr><td>7. 现任经理画像</td><td>✔ 经历、在管产品与规模</td><td>✔ 从业、在管、任期年化与观点</td><td>◐ 任期回报、同类与基准比较</td><td><span class="pill p-tie">聚源/盈米</span></td></tr>
+        <tr><td>8. 规模与季度申赎</td><td>✔ 20 期申购/赎回/净申购</td><td>✘ 仅最新全基金规模</td><td>◐ 三期 A 类份额/净值，可算两期变化</td><td><span class="pill p-jy">聚源</span></td></tr>
+        <tr><td>9. 持有人结构</td><td>✔ 9 期机构/个人/员工序列</td><td>✘ 无</td><td>✘ 无</td><td><span class="pill p-jy">聚源</span></td></tr>
+        <tr><td>10. 选股 / 择时</td><td>✔ 周频 T-M 序列与排名</td><td>◐ 工具存在，本基金无数据</td><td>◐ 单点 Alpha/Beta；没有序列与排名</td><td><span class="pill p-jy">聚源</span></td></tr>
+        <tr><td>11. Brinson 归因</td><td>◐ 行业明细丰富但需清洗</td><td>✔ 配置 +7.44%、选股 +3.57%、总超额 +11.01%</td><td>✘ 无数据</td><td><span class="pill p-ym">盈米</span></td></tr>
+        <tr><td>12. 风格分析</td><td>✔ 六风格因子日频序列</td><td>◐ 板块偏好/权益仓位间接描述</td><td>◐ TMT/消费文字标签</td><td><span class="pill p-jy">聚源</span></td></tr>
+        <tr><td>13. 盈利概率</td><td>✔ 6 持有期 × 7 观察窗</td><td>◐ 持有半年 51.55% 单点</td><td>✘ “100%”与负收益冲突</td><td><span class="pill p-jy">聚源</span></td></tr>
+        <tr><td>14. 估值与财务质量</td><td>✔ 个股 PE 与季度变化</td><td>✔ 组合 PE/PB/ROE/增长/股息率</td><td>✘ 无</td><td><span class="pill p-tie">聚源/盈米</span></td></tr>
+        <tr><td>15. 经理观点/资讯</td><td>◐ 有新闻/公告/研报接口，本样本调用不足</td><td>✔ SearchManagerViewpoint 返回季报观点</td><td>✔ 返回二季报观点摘要</td><td><span class="pill p-ym">盈米/东财</span></td></tr>
+        <tr><td>16. 诊断与适配</td><td>✘ 纯数据，无原生适配结论</td><td>✔ 风险、估值、趋势、温度、适配文本</td><td>◐ 基础风险等级与适合人群，缺依据链</td><td><span class="pill p-ym">盈米</span></td></tr>
+        <tr><td>17. 交易与渠道</td><td>◐ 公告口径费率</td><td>✔ 实时状态、折扣、起投、到账</td><td>◐ 开放式/频率/币种；无费率到账</td><td><span class="pill p-ym">盈米</span></td></tr>
+        <tr><td>18. 交付与扩展</td><td>◐ 原子数据与组合类接口</td><td>✔ 回测、蒙特卡洛、图表、PDF、云 Skill</td><td>✔ Claw、Skill 广场、下载、外部 Agent 分发</td><td><span class="pill p-tie">盈米/东财</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout green"><strong>矩阵结论</strong>数据深水区聚源显著领先；解释、交易和交付盈米领先；东财在分发与快速成文上有优势，但本次基金诊断没有形成独占数据能力。</div>
+  </section>
 
-      <section id="verdict" class="section-card">
-        <div class="section-head">
-          <h2>一句话结论</h2>
-          <p>三者不是同一种产品，不能只按工具数量排座次。</p>
-        </div>
-        <p class="conclusion"><strong>专业数据底座选聚源，面向投资者的基金诊断与交付选盈米，广域金融 Skill 生态与分发入口看东财。</strong>本次 010350 实测中，东财“综合诊基”未直接完成深度任务，降级到通用助手后虽补齐了多数章节，但出现明显口径矛盾，因此暂不宜直接进入投顾生产链路。</p>
-      </section>
+  <section id="quality" class="card">
+    <h2>数据一致性与口径审计</h2><div class="sub">一致不等于口径相同；不一致也不一定是错。只有无法同时成立的字段才列为 P0。</div>
+    <div class="scroll"><table>
+      <thead><tr><th>指标</th><th class="jy">聚源</th><th class="ym">盈米</th><th class="dc">东财</th><th>审计结论</th></tr></thead>
+      <tbody>
+        <tr><td>近1年收益</td><td>+30.80%</td><td>+30.80%</td><td>未给同窗口收益；仅排名</td><td><span class="pill p-ok">双源一致</span></td></tr>
+        <tr><td>近3年收益</td><td>+126.29%</td><td>+126.29%</td><td>未返回</td><td><span class="pill p-ok">双源一致</span></td></tr>
+        <tr><td>近3月收益</td><td>-4.68%</td><td>-4.68%</td><td>-4.683%（04-23—07-22）</td><td><span class="pill p-ok">三源一致</span></td></tr>
+        <tr><td>近1年最大回撤</td><td>-20.37%</td><td>-20.37%</td><td>0% 为近三月窗口且与负收益冲突</td><td><span class="pill p-no">东财字段 P0</span></td></tr>
+        <tr><td>近3年最大回撤</td><td>-24.65%</td><td>-24.65%</td><td>未返回</td><td><span class="pill p-ok">双源一致</span></td></tr>
+        <tr><td>基金规模</td><td>45.41 亿，A类</td><td>69.59 亿，A+C</td><td>45.41 亿，A类</td><td><span class="pill p-ok">口径拆分后一致</span></td></tr>
+        <tr><td>现任经理回报</td><td>+127.86%</td><td>+130.12%</td><td>+130.27%</td><td><span class="pill p-mid">起算/更新日微差</span></td></tr>
+        <tr><td>持有半年盈利概率</td><td>52.82%</td><td>51.55%</td><td>100%（短窗口“盈利百分比”）</td><td><span class="pill p-no">东财口径不可用</span></td></tr>
+        <tr><td>前十大持仓报告期</td><td>2026-06-30</td><td>2026-06-30</td><td>标 2026-07-21，成分/占比完全相同</td><td><span class="pill p-no">疑似错标查询日</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout red"><strong>东财 P0 冲突</strong>同一区间同时出现收益 -4.683%、最大回撤 0%、盈利百分比 100%。正式服务必须在生成前拦截，而不是由用户自行识别。</div>
+  </section>
 
-      <section class="provider-grid">
-        <article class="provider g">
-          <div class="label">RESEARCH DATABASE</div>
-          <h3>恒生聚源 Gildata MCP</h3>
-          <p>历史经理、季度申赎、持有人结构、逐季持仓和选股/择时序列最深，更像专业数据库的 MCP 化。</p>
-          <div class="score">80<small> / 100 场景加权</small></div>
-          <span class="best">最适合：投研底座、历史穿透</span>
-        </article>
-        <article class="provider y">
-          <div class="label">ADVISOR SERVICE</div>
-          <h3>盈米且慢 MCP + Skill</h3>
-          <p>诊断、同类百分位、归因、风险适配、交易信息与图表/PDF 串成完整交付，更接近“基金投顾服务”。</p>
-          <div class="score">86<small> / 100 场景加权</small></div>
-          <span class="best">最适合：客户诊断、投顾交付</span>
-        </article>
-        <article class="provider e">
-          <div class="label">SKILL ECOSYSTEM</div>
-          <h3>东方财富妙想 Skills</h3>
-          <p>覆盖市场广、Skill 广场成熟、自然语言入口顺，但本次诊基发生降级，且关键风险指标存在逻辑冲突。</p>
-          <div class="score">62<small> / 100 单样本审慎分</small></div>
-          <span class="best">最适合：广域查询、生态分发</span>
-        </article>
-      </section>
+  <section class="card">
+    <h2>场景化评分</h2><div class="sub">1—5 分，仅针对本次基金诊断。总分使用固定权重：数据覆盖25、历史深度20、质量一致性20、诊断15、交付10、交易10。</div>
+    <div class="score-grid">
+      <div class="score-card" style="--c:var(--jy)"><h3 class="jy">聚源 · 80</h3><div class="metric"><span>数据覆盖</span><div class="track"><i style="width:96%"></i></div><b>4.8</b></div><div class="metric"><span>历史深度</span><div class="track"><i style="width:100%"></i></div><b>5.0</b></div><div class="metric"><span>质量一致</span><div class="track"><i style="width:90%"></i></div><b>4.5</b></div><div class="metric"><span>诊断易用</span><div class="track"><i style="width:44%"></i></div><b>2.2</b></div><div class="metric"><span>交付生态</span><div class="track"><i style="width:50%"></i></div><b>2.5</b></div><div class="metric"><span>交易渠道</span><div class="track"><i style="width:58%"></i></div><b>2.9</b></div></div>
+      <div class="score-card" style="--c:var(--ym)"><h3 class="ym">盈米 · 86</h3><div class="metric"><span>数据覆盖</span><div class="track"><i style="width:78%"></i></div><b>3.9</b></div><div class="metric"><span>历史深度</span><div class="track"><i style="width:62%"></i></div><b>3.1</b></div><div class="metric"><span>质量一致</span><div class="track"><i style="width:92%"></i></div><b>4.6</b></div><div class="metric"><span>诊断易用</span><div class="track"><i style="width:98%"></i></div><b>4.9</b></div><div class="metric"><span>交付生态</span><div class="track"><i style="width:100%"></i></div><b>5.0</b></div><div class="metric"><span>交易渠道</span><div class="track"><i style="width:100%"></i></div><b>5.0</b></div></div>
+      <div class="score-card" style="--c:var(--dc)"><h3 class="dc">东财 · 62</h3><div class="metric"><span>数据覆盖</span><div class="track"><i style="width:60%"></i></div><b>3.0</b></div><div class="metric"><span>历史深度</span><div class="track"><i style="width:36%"></i></div><b>1.8</b></div><div class="metric"><span>质量一致</span><div class="track"><i style="width:38%"></i></div><b>1.9</b></div><div class="metric"><span>诊断易用</span><div class="track"><i style="width:80%"></i></div><b>4.0</b></div><div class="metric"><span>交付生态</span><div class="track"><i style="width:88%"></i></div><b>4.4</b></div><div class="metric"><span>交易渠道</span><div class="track"><i style="width:62%"></i></div><b>3.1</b></div></div>
+    </div>
+  </section>
 
-      <section id="east-test" class="section-card">
-        <div class="section-head">
-          <h2>东财申请与同题实测</h2>
-          <p>账号申请已完成，专属 API Key 已生成；密钥未进入本报告、代码仓库或下载文件。</p>
-        </div>
-        <div class="callout" style="--c:var(--ok)">
-          <h3><span class="status ok">已完成</span> 服务申请成功</h3>
-          <p>当前账号可进入 Skill 广场、查看 API Key 并使用妙想 Claw。由于官方“一键下载”会把 Key 预填进技能包，本次主动取消落盘，改用已登录网页端完成真实调用。</p>
-        </div>
-        <div class="test-route" style="margin-top:18px">
-          <div class="route-box"><b>① 同题请求</b><span>010350 · 14 类诊断字段 · 指定口径与缺失披露</span></div>
-          <div class="arrow">→</div>
-          <div class="route-box fail"><b>② 综合诊基 Skill</b><span><span class="status bad">未直接完成</span><br>页面提示“暂时不支持此场景”</span></div>
-          <div class="arrow">→</div>
-          <div class="route-box ok"><b>③ 通用金融助手</b><span><span class="status ok">降级完成</span><br>mx-financial-assistant + deep-think</span></div>
-        </div>
-        <div class="quality-grid">
-          <div class="quality ok"><b>10 / 14</b><span>请求章节有有效内容或明确输出</span></div>
-          <div class="quality warn"><b>4 项</b><span>季度持仓变化、行业权重、持有人、Brinson 为无数据</span></div>
-          <div class="quality bad"><b>3 处</b><span>持仓日期、最大回撤、盈利百分比存在明显口径风险</span></div>
-        </div>
-        <div class="callout" style="--c:var(--bad);margin-top:16px">
-          <h3>不可忽略的数据一致性问题</h3>
-          <p>同一 2026-04-23 至 2026-07-22 区间里，报告同时给出净值增长率 -4.683%、最大回撤 0%、区间盈利百分比 100%。这三项不能同时成立；其中最大回撤和盈利百分比不应被生产系统采信。</p>
-        </div>
-      </section>
+  <section id="service" class="card">
+    <h2>工具形态与服务产品化</h2><div class="sub">这部分解释为什么三家的报告风格不同。</div>
+    <div class="shape">
+      <article><h3 class="jy">聚源：数据库型 MCP</h3><dl><dt>对象</dt><dd>数据表、指标、历史序列</dd><dt>交互</dt><dd>自然语言 query → Markdown/结构化数据</dd><dt>优势</dt><dd>广、深、精确排名、跨资产域</dd><dt>风险</dt><dd>返回冗长、需清洗，观点与适配由使用者负责</dd><dt>适合</dt><dd>研究员、量化、尽调、数据底座</dd></dl></article>
+      <article><h3 class="ym">盈米：投顾服务型 MCP + Skill</h3><dl><dt>对象</dt><dd>工具 + 诊断结论 + 投顾服务</dd><dt>交互</dt><dd>强 Schema 原子工具 + 场景 Skill</dd><dt>优势</dt><dd>百分位、适配、交易、图表/PDF、组合闭环</dd><dt>风险</dt><dd>历史经理、申赎、持有人、个股序列不足</dd><dt>适合</dt><dd>客户报告、组合诊断、投后陪伴</dd></dl></article>
+      <article><h3 class="dc">东财：入口分发型 Skill + Agent</h3><dl><dt>对象</dt><dd>Skill 广场、Claw、MCP/金融数据、API Key</dd><dt>交互</dt><dd>账号领 Key → 下载/安装 → Agent 调度</dd><dt>优势</dt><dd>低门槛、跨端、内容研究与流量入口</dd><dt>风险</dt><dd>本次路由降级；权限、成本、口径与评测透明度不足</dd><dt>适合</dt><dd>快速问答、内容生产、外部 Agent 分发</dd></dl></article>
+    </div>
+    <div class="callout amber"><strong>协议边界</strong>东财当前可确认的是 Skill + API Key + HTTP/Agent 接入；不要在技术选型材料中直接等同为“标准 MCP Server”，除非针对实际端点完成协议握手、工具发现和错误恢复验证。</div>
+  </section>
 
-      <section class="section-card">
-        <div class="section-head">
-          <h2>六维服务画像</h2>
-          <p>1–5 分：基于本次单基金实测、用户提供的两份完整报告与当前官方接入页；不是供应商总体能力审计。</p>
-        </div>
-        <div class="chart-grid">
-          <div>
-            <div class="canvas-wrap"><canvas id="radar" width="600" height="460" aria-label="三家服务六维雷达图"></canvas></div>
-            <div class="legend">
-              <span style="--c:var(--g)"><i></i>聚源</span>
-              <span style="--c:var(--y)"><i></i>盈米</span>
-              <span style="--c:var(--e)"><i></i>东财</span>
-            </div>
-          </div>
-          <div class="score-list">
-            <div class="callout"><h3>场景加权总分</h3><p>基金诊断场景权重：数据深度 25%、诊断完成度 25%、一致性 20%、交付 15%、生态 10%、接入 5%。</p></div>
-            <div class="score-row"><b>盈米</b><div class="bar" style="--c:var(--y)"><i style="width:86%"></i></div><b>86</b></div>
-            <div class="score-row"><b>聚源</b><div class="bar" style="--c:var(--g)"><i style="width:80%"></i></div><b>80</b></div>
-            <div class="score-row"><b>东财</b><div class="bar" style="--c:var(--e)"><i style="width:62%"></i></div><b>62</b></div>
-            <details open><summary>为什么东财不是“功能多就得分高”？</summary><p>广场里可见的能力确实最广，但本题是基金深度诊断。直接 Skill 路由失败、降级后缺少 4 类数据，还出现内部矛盾；因此生态分高，但诊断完成度与一致性被扣分。</p></details>
-            <details><summary>为什么聚源不是总分第一？</summary><p>聚源在专业历史数据上最强，但从数据到面向客户的诊断、图表、话术、风险适配仍需要二次编排，交付链路不是开箱即用。</p></details>
-            <details><summary>为什么盈米领先？</summary><p>不是因为底层数据最全，而是其输出更接近投顾服务：指标解释、同类百分位、Brinson、盈利概率、交易规则、风险适配和报告交付形成闭环。</p></details>
-          </div>
-        </div>
-      </section>
+  <section id="decision" class="card">
+    <h2>选型决策</h2><div class="sub">按目标选，不按总分选。</div>
+    <div class="scroll"><table>
+      <thead><tr><th>场景</th><th>首选</th><th>第二源</th><th>原因</th><th>不可省略的控制</th></tr></thead>
+      <tbody>
+        <tr><td>基金深度研究 / 尽调</td><td><span class="pill p-jy">聚源</span></td><td>盈米</td><td>历史、结构、逐季变化与精确排名最强</td><td>清洗、口径字典、结论复核</td></tr>
+        <tr><td>投顾客户诊断 / 报告</td><td><span class="pill p-ym">盈米</span></td><td>聚源</td><td>适配、交易、解释与交付完整</td><td>深水区数据补证、合规审阅</td></tr>
+        <tr><td>快速内容 / 外部 Agent 分发</td><td><span class="pill p-dc">东财</span></td><td>盈米</td><td>Skill 广场、Key 与跨端入口低门槛</td><td>路由日志、冲突拦截、敏感输出闸门</td></tr>
+        <tr><td>生产级基金服务</td><td><span class="pill p-tie">聚源 + 盈米</span></td><td>第三源校验</td><td>数据深度与投顾语义互补</td><td>统一 Service ID、as_of、口径、版本、引用</td></tr>
+      </tbody>
+    </table></div>
+  </section>
 
-      <section id="matrix" class="section-card">
-        <div class="section-head">
-          <h2>18 维能力矩阵</h2>
-          <p>“胜”表示本样本中证据最强；“缺”表示没有数据或未验证，不等于供应商永远不具备。</p>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>维度</th><th>聚源 Gildata</th><th>盈米且慢</th><th>东方财富</th><th>本题判断</th></tr></thead>
-            <tbody>
-              <tr><td>1. 基础档案</td><td>完整</td><td>完整</td><td>完整</td><td>三方打平</td></tr>
-              <tr><td>2. 阶段收益</td><td class="winner">1Y/3Y 与排名完整</td><td class="winner">1Y/3Y 一致</td><td>只给近 3 月区间及排名</td><td>聚源 / 盈米</td></tr>
-              <tr><td>3. 同类排名与分位</td><td>精确排名</td><td class="winner">排名 + 四维百分位</td><td>给排名，分类口径未展开</td><td>盈米胜</td></tr>
-              <tr><td>4. 风险指标</td><td>原始风险数据</td><td class="winner">最大回撤 + 风险画像 + 分位</td><td class="weak">波动/Sharpe 有，回撤 0% 矛盾</td><td>盈米胜</td></tr>
-              <tr><td>5. 历任基金经理</td><td class="winner">全历史经理与任期</td><td>以现任为主</td><td>只返回现任经理</td><td>聚源胜</td></tr>
-              <tr><td>6. 当前重仓</td><td class="winner">明细完整</td><td>前十大与诊断</td><td class="weak">有明细，但标注 7/21 存疑</td><td>聚源胜</td></tr>
-              <tr><td>7. 逐季持仓变化</td><td class="winner">个股级历史序列</td><td>基金层诊断可用</td><td class="weak">无数据</td><td>聚源胜</td></tr>
-              <tr><td>8. 行业配置</td><td class="winner">历史/当前更深</td><td class="winner">行业 + 估值 + 换手</td><td class="weak">仅文字方向，无权重</td><td>聚源 / 盈米</td></tr>
-              <tr><td>9. 规模与季度申赎</td><td class="winner">份额、申购赎回历史</td><td>规模为主</td><td>3 季份额与资产，能算变动</td><td>聚源胜</td></tr>
-              <tr><td>10. 持有人结构</td><td class="winner">机构/个人结构</td><td class="weak">缺</td><td class="weak">无数据</td><td>聚源胜</td></tr>
-              <tr><td>11. 选股/择时能力</td><td class="winner">周频历史序列</td><td>投资者化解释</td><td>Alpha / Beta 单区间</td><td>聚源胜</td></tr>
-              <tr><td>12. Brinson 归因</td><td class="weak">未直接交付</td><td class="winner">直接分解：配置 +7.44%、选择 +3.57%</td><td class="weak">无数据</td><td>盈米胜</td></tr>
-              <tr><td>13. 盈利概率</td><td class="weak">未直接交付</td><td class="winner">场景化盈利概率</td><td class="weak">100% 与负收益冲突</td><td>盈米胜</td></tr>
-              <tr><td>14. 基金经理观点</td><td>需另取材料</td><td class="winner">观点提炼与解释</td><td>有二季报观点摘要</td><td>盈米胜</td></tr>
-              <tr><td>15. 交易 / 投资者适配</td><td>弱</td><td class="winner">交易规则 + 风险适配</td><td>有交易方式和宽泛适配</td><td>盈米胜</td></tr>
-              <tr><td>16. 报告与可视交付</td><td>需二次开发</td><td class="winner">图表、HTML、PDF、场景 Skill</td><td>Markdown 对话报告</td><td>盈米胜</td></tr>
-              <tr><td>17. Skill / 工具生态广度</td><td>约 480 工具，数据型</td><td>约 70 工具 + 场景 Skill</td><td class="winner">广场、Claw、研究/办公/金融多类 Skill</td><td>东财胜</td></tr>
-              <tr><td>18. 接入与口径可审计</td><td class="winner">MCP 工具级、字段清晰</td><td class="winner">MCP + Skill、缺失披露较好</td><td class="weak">Key + HTTP / Skill；标准 MCP 未验证，实测有矛盾</td><td>聚源 / 盈米</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+  <section class="card">
+    <h2>推荐的三源生产工作流</h2><div class="sub">把“三家比较”变成可复用的质量控制流程。</div>
+    <div class="workflow">
+      <div class="step"><small>01 · 任务契约</small><b>统一 14 项字段</b><span>窗口、份额、同类池、缺失规则</span></div>
+      <div class="step"><small>02 · 主数据</small><b>聚源拉深度</b><span>历史经理、申赎、持有人、逐季持仓</span></div>
+      <div class="step"><small>03 · 服务解释</small><b>盈米生成投顾语义</b><span>适配、百分位、归因、交易与交付</span></div>
+      <div class="step"><small>04 · 第三源</small><b>东财做外部校验</b><span>关键收益、持仓、经理与事件交叉检查</span></div>
+      <div class="step"><small>05 · 质量闸门</small><b>冲突阻断后发布</b><span>来源、as_of、版本、降级与审核记录</span></div>
+    </div>
+  </section>
 
-      <section id="crosscheck" class="section-card">
-        <div class="section-head">
-          <h2>跨源一致性核验</h2>
-          <p>先看两家已经相互验证的硬指标，再看东财是否能同口径复现。</p>
-        </div>
-        <div class="cross-grid">
-          <div class="metric"><div class="k">近 1 年收益</div><div class="v">30.80%</div><div class="s">聚源 = 盈米；东财未返回同口径</div></div>
-          <div class="metric"><div class="k">近 3 年收益</div><div class="v">126.29%</div><div class="s">聚源 = 盈米；东财未返回同口径</div></div>
-          <div class="metric"><div class="k">近 1 年最大回撤</div><div class="v">-20.37%</div><div class="s">聚源 = 盈米；东财给 3 月区间 0%，不可比且存疑</div></div>
-          <div class="metric"><div class="k">A 类规模 2026Q2</div><div class="v">45.41 亿</div><div class="s">聚源 = 东财；盈米 69.59 亿为 A+C 全基金</div></div>
-        </div>
-        <div class="callout" style="--c:var(--warn);margin-top:16px">
-          <h3>口径比数值更重要</h3>
-          <p>同一个“规模”，聚源和东财使用 A 类份额口径，盈米报告使用 A+C 合并口径；数字不同并不代表数据冲突。真正的问题是东财把披露期持仓标为接近查询日，且风险指标在同一区间内自相矛盾。</p>
-        </div>
-      </section>
+  <section class="card">
+    <h2>落地路线图</h2><div class="sub">Owner、依赖和验收信号明确，避免停在“继续调研”。</div>
+    <div class="roadmap">
+      <article class="action"><small>P0 · 0—2 周</small><h3>建立基金诊断字段契约与冲突拦截</h3><p>定义 14 项字段的来源、as_of、单位、窗口、份额、同类池与缺失规则；收益为负且回撤为0时阻断。</p><span class="owner">Owner：数据平台 + 投研</span></article>
+      <article class="action"><small>P1 · 3—6 周</small><h3>记录 Skill 路由、降级和证据链</h3><p>每次运行保留目标 Skill、实际命中、降级原因、工具版本、字段来源和引用完整率。</p><span class="owner">Owner：Agent 平台</span></article>
+      <article class="action"><small>P1 · 5—10 周</small><h3>固化“聚源深度 + 盈米交付”服务</h3><p>同一 Service ID 串联主数据、解释、图表、PDF、适配和审阅，第三源只校验不混写口径。</p><span class="owner">Owner：开放平台 + 小顾</span></article>
+    </div>
+  </section>
 
-      <section id="selection" class="section-card">
-        <div class="section-head">
-          <h2>按场景选，而不是选唯一冠军</h2>
-          <p>采购与产品架构建议。</p>
-        </div>
-        <div class="scenario-grid">
-          <article class="scenario"><div class="icon">🧬</div><h3>专业投研穿透</h3><p>历史经理、申赎、持有人、逐季个股和选股择时序列。</p><b style="color:var(--g)">首选：聚源</b></article>
-          <article class="scenario"><div class="icon">🩺</div><h3>客户基金诊断</h3><p>把数据变成风险、归因、适配、交易和可交付报告。</p><b style="color:var(--y)">首选：盈米</b></article>
-          <article class="scenario"><div class="icon">🧰</div><h3>广域金融助手</h3><p>A/H/美股、基金、债券、资讯、宏观、研究写作与 Skill 分发。</p><b style="color:var(--e)">观察：东财</b></article>
-          <article class="scenario"><div class="icon">🧱</div><h3>统一开放平台</h3><p>需要统一身份、路由、口径、证据和交付，而非绑定单一供应商。</p><b>建议：组合架构</b></article>
-        </div>
-      </section>
+  <section id="sources" class="card">
+    <h2>Source Index</h2><div class="sub">U = 用户提供/实测；P = 官方公开资料。单样本不能外推为供应商整体结论。</div>
+    <div class="source-grid">
+      <div class="source"><b>SRC-U-001</b><a href="https://mcp.edgeone.site/share/FoBzYWjyHsr4oTfL0_VRI" target="_blank" rel="noopener">聚源 010350 完整报告</a> · 16 接口 · 2026-07-23。</div>
+      <div class="source"><b>SRC-U-002</b><a href="https://mcp.edgeone.site/share/j0VenJgH1qGXT5Brp8_-u" target="_blank" rel="noopener">盈米 010350 完整报告</a> · 18 次调用，2 项无数据 · 2026-07-23。</div>
+      <div class="source"><b>SRC-U-003</b><a href="../eastmoney-fund-report-010350-2026-07-28/" target="_blank" rel="noopener">东财妙想 010350 完整复现</a> · 网页真实调用 · 2026-07-28。</div>
+      <div class="source"><b>SRC-U-004</b><a href="https://mcp.edgeone.site/share/usAyeOT8Io1w33SRb0bbH" target="_blank" rel="noopener">原两家能力对比模板</a> · 本报告的基线结构与历史判断。</div>
+      <div class="source"><b>SRC-P-001</b><a href="https://ai.eastmoney.com/skills" target="_blank" rel="noopener">东方财富妙想 Skill 广场</a> · 当前入口、卡片和 Key/下载能力。</div>
+      <div class="source"><b>SRC-P-002</b><a href="https://caifuhao.eastmoney.com/news/20260629133556643614140" target="_blank" rel="noopener">妙想 2026-06-29 官方说明</a> · Skill 分发与安装链路。</div>
+    </div>
+  </section>
 
-      <section class="section-card">
-        <div class="section-head">
-          <h2>推荐组合工作流</h2>
-          <p>把每家的长板放在最合适的层，不要求一个服务包打天下。</p>
-        </div>
-        <div class="workflow">
-          <div class="step" style="--c:var(--g)"><small>01 · EVIDENCE</small><h3>聚源补深水数据</h3><p>历史经理、申赎、持有人、逐季持仓、选股/择时序列，形成可追溯证据底座。</p></div>
-          <div class="step" style="--c:var(--e)"><small>02 · DISCOVERY</small><h3>东财补广域发现</h3><p>跨市场数据、资讯、宏观、热点与研究 Skill；所有高风险指标必须经过一致性校验。</p></div>
-          <div class="step" style="--c:var(--y)"><small>03 · SERVICE</small><h3>盈米完成投顾交付</h3><p>归因、风险适配、交易信息、客户解释、图表/PDF 与服务场景编排。</p></div>
-        </div>
-      </section>
-
-      <section class="section-card">
-        <div class="section-head"><h2>落地优先级</h2><p>把本次比较转成可执行产品动作。</p></div>
-        <div class="priority"><span class="p0">P0</span><b>统一口径闸门</b><span>所有供应商数据必须携带 source、as_of、scope、entity_level；对“回撤=0 但收益为负”这类冲突自动阻断。</span></div>
-        <div class="priority"><span class="p0">P0</span><b>服务路由可观测</b><span>记录命中 Skill、降级原因、实际执行工具与缺失字段；不允许把降级结果包装成原 Skill 成功。</span></div>
-        <div class="priority"><span class="p1">P1</span><b>三方回归集</b><span>至少覆盖股票、债基、主动权益、指数基金、跨境基金与异常数据六类样本，避免被单样本误导。</span></div>
-        <div class="priority"><span class="p1">P1</span><b>供应商分层</b><span>底层数据、诊断算法、内容交付、渠道分发分别选型，服务 ID 贯穿审计与结算。</span></div>
-        <div class="priority"><span class="p2">P2</span><b>东财二次验证</b><span>等待综合诊基修复后，重跑 010350 同题；验证持仓日期、最大回撤、盈利百分比和 Brinson。</span></div>
-      </section>
-
-      <section id="sources" class="section-card">
-        <div class="section-head"><h2>证据与边界</h2><p>结论按“已实测 / 官方说明 / 推断”分层。</p></div>
-        <details open><summary>用户提供的对比与完整报告</summary>
-          <p><a href="https://mcp.edgeone.site/share/usAyeOT8Io1w33SRb0bbH" target="_blank" rel="noopener">原始两家对比模板</a> ·
-          <a href="https://mcp.edgeone.site/share/FoBzYWjyHsr4oTfL0_VRI" target="_blank" rel="noopener">聚源完整实测报告</a> ·
-          <a href="https://mcp.edgeone.site/share/j0VenJgH1qGXT5Brp8_-u" target="_blank" rel="noopener">盈米完整实测报告</a></p>
-        </details>
-        <details open><summary>东方财富官方材料与当前入口</summary>
-          <p><a href="https://ai.eastmoney.com/skills" target="_blank" rel="noopener">妙想 Skill 广场</a> ·
-          <a href="https://caifuhao.eastmoney.com/news/20260629133556643614140" target="_blank" rel="noopener">2026-06-29：7 大 Skill 官方说明</a> ·
-          <a href="https://caifuhao.eastmoney.com/news/20260313152405227588480" target="_blank" rel="noopener">2026-03-13：旧版接入手册</a></p>
-        </details>
-        <details><summary>实测边界</summary>
-          <p>聚源与盈米基于用户提供的 2026-07-23 报告；东财基于 2026-07-28 当前账号真实页面和一次网页端调用。东财未下载包含 Key 的技能包，未将 Key 写入任何产物。单样本可以证明“本次发生了什么”，不能代表所有基金与全部时段。</p>
-        </details>
-        <details><summary>合规说明</summary>
-          <p>本报告用于产品与服务选型研究，不构成投资建议。评分是场景化研究判断，不是对供应商整体经营或数据质量的最终审计。网页密码是前端提示，不能替代服务端访问控制。</p>
-        </details>
-      </section>
-
-      <footer>Prepared for Clair · 2026-07-28 · Password-gated research artifact</footer>
-    </main>
-  </div>
-
-  <script>
-    const PASSWORD="2026";
-    const gate=document.getElementById("gate"), report=document.getElementById("report");
-    const input=document.getElementById("password"), error=document.getElementById("gate-error");
-    function unlock(){
-      if(input.value===PASSWORD){
-        gate.classList.add("hidden");report.classList.remove("hidden");sessionStorage.setItem("mcp-benchmark-unlocked","1");drawRadar();
-      }else{error.textContent="密码不正确，请重试。";input.select();}
-    }
-    document.getElementById("unlock").addEventListener("click",unlock);
-    input.addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});
-    if(sessionStorage.getItem("mcp-benchmark-unlocked")==="1"){gate.classList.add("hidden");report.classList.remove("hidden");setTimeout(drawRadar,0)}
-
-    function drawRadar(){
-      const canvas=document.getElementById("radar");if(!canvas||canvas.dataset.drawn)return;canvas.dataset.drawn="1";
-      const ctx=canvas.getContext("2d"), dpr=Math.max(1,window.devicePixelRatio||1), cssW=600,cssH=460;
-      canvas.width=cssW*dpr;canvas.height=cssH*dpr;canvas.style.width="100%";canvas.style.maxWidth=cssW+"px";ctx.scale(dpr,dpr);
-      const cx=cssW/2,cy=cssH/2+8,R=160,labels=["数据深度","诊断完成度","投资者交付","生态广度","口径一致性","接入开放度"];
-      const series=[
-        {name:"聚源",c:"#2763d7",v:[5,3,2,4.6,4.7,4.5]},
-        {name:"盈米",c:"#f08b3e",v:[3.5,5,5,3.8,4.6,4.5]},
-        {name:"东财",c:"#d9373e",v:[3,3.1,3.2,5,2.1,3.2]}
-      ];
-      ctx.clearRect(0,0,cssW,cssH);ctx.font="12px -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif";
-      for(let level=1;level<=5;level++){
-        ctx.beginPath();
-        labels.forEach((_,i)=>{const a=-Math.PI/2+i*Math.PI*2/labels.length,x=cx+Math.cos(a)*R*level/5,y=cy+Math.sin(a)*R*level/5;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});
-        ctx.closePath();ctx.strokeStyle=level===5?"#b9c5d5":"#dde4ee";ctx.lineWidth=1;ctx.stroke();
-      }
-      labels.forEach((lab,i)=>{
-        const a=-Math.PI/2+i*Math.PI*2/labels.length,x=cx+Math.cos(a)*R,y=cy+Math.sin(a)*R;
-        ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(x,y);ctx.strokeStyle="#dde4ee";ctx.stroke();
-        const lx=cx+Math.cos(a)*(R+34),ly=cy+Math.sin(a)*(R+26);
-        ctx.fillStyle="#506079";ctx.textAlign=Math.abs(Math.cos(a))<.2?"center":Math.cos(a)>0?"left":"right";ctx.textBaseline="middle";ctx.fillText(lab,lx,ly);
-      });
-      series.forEach(s=>{
-        ctx.beginPath();
-        s.v.forEach((val,i)=>{const a=-Math.PI/2+i*Math.PI*2/labels.length,x=cx+Math.cos(a)*R*val/5,y=cy+Math.sin(a)*R*val/5;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});
-        ctx.closePath();ctx.fillStyle=s.c+"22";ctx.strokeStyle=s.c;ctx.lineWidth=2;ctx.fill();ctx.stroke();
-        s.v.forEach((val,i)=>{const a=-Math.PI/2+i*Math.PI*2/labels.length,x=cx+Math.cos(a)*R*val/5,y=cy+Math.sin(a)*R*val/5;ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fillStyle=s.c;ctx.fill()});
-      });
-    }
-  </script>
-</body>
-</html>
+  <section class="card" style="border-style:dashed;box-shadow:none;background:transparent">
+    <small><b>方法与免责声明：</b>聚源、盈米使用用户提供的 2026-07-23 完整报告；东财使用 2026-07-28 已登录页面的单次真实调用。评分为 010350 场景化研究判断，不是供应商整体审计。缺失项不以零补齐；不同份额、时间窗、同类池和频率不直接混算。报告不构成投资建议。页面密码是前端访问提示，不能替代服务端鉴权。</small>
+  </section>
+  <footer class="foot">三家金融 MCP / Skills 服务深度对比 · 010350 同题实测 · 2026-07-28</footer>
+</main></div>
+<script>
+const PASS="2026",gate=document.getElementById("gate"),report=document.getElementById("report"),pw=document.getElementById("pw"),err=document.getElementById("err");
+function unlock(){if(pw.value===PASS){gate.classList.add("hidden");report.classList.remove("hidden");sessionStorage.setItem("threeway010350","1")}else{err.textContent="密码不正确，请重试。";pw.select()}}
+document.getElementById("go").onclick=unlock;pw.addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});if(sessionStorage.getItem("threeway010350")==="1"){gate.classList.add("hidden");report.classList.remove("hidden")}
+</script>
+</body></html>
