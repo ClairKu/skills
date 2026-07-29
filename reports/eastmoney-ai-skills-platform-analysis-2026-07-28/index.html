@@ -93,21 +93,7 @@
   </style>
 </head>
 <body>
-  <div class="gate" id="gate">
-    <div class="gate-card">
-      <div class="lock">🔐</div>
-      <h1>内部竞品研究</h1>
-      <p>输入访问密码，查看东方财富妙想 AI Skills 平台服务拆解与盈米行动建议。</p>
-      <div class="gate-row">
-        <input id="password" type="password" inputmode="numeric" autocomplete="current-password" placeholder="访问密码" aria-label="访问密码">
-        <button id="unlock">进入报告</button>
-      </div>
-      <div class="gate-error" id="gate-error"></div>
-      <p class="gate-note">提示：本页面密码仅为前端访问提示，不等同于服务端安全鉴权。</p>
-    </div>
-  </div>
-
-  <main class="wrap hidden" id="report">
+  <main class="wrap" id="report">
     <!-- 1. HERO -->
     <header class="hero">
       <div class="hero-grid">
@@ -380,35 +366,11 @@
         <li>“未在公开资料中披露”不等于“产品一定不具备”；需在正式商务、技术和安全尽调中补证。</li>
         <li>2026-07-28 页面实测只证明当时可见状态；Skill 数量、额度、积分与渠道可能继续变化。</li>
         <li>盈米 AI 实验室和 OAP 内容是规划/Demo 参照，不能作为已上线、已批准、已有收入或已通过合规验收的证据。</li>
-        <li>页面密码为前端提示，源码可被查看；敏感材料应改用具备服务端身份鉴权的内部文档系统。</li>
+        <li>报告现由工作台统一访问；敏感材料应改用具备服务端身份鉴权的内部文档系统。</li>
       </ul>
     </section>
     <footer>Prepared for Clair · Competitive Product Research · 2026-07-28 · 15 evidence groups</footer>
   </main>
 
-  <script>
-    const PASSWORD="2026";
-    const gate=document.getElementById("gate");
-    const report=document.getElementById("report");
-    const input=document.getElementById("password");
-    const error=document.getElementById("gate-error");
-    function unlock(){
-      if(input.value===PASSWORD){
-        gate.classList.add("hidden");
-        report.classList.remove("hidden");
-        sessionStorage.setItem("eastmoney-platform-report-unlocked","1");
-        window.scrollTo({top:0});
-      }else{
-        error.textContent="密码不正确，请重试。";
-        input.select();
-      }
-    }
-    document.getElementById("unlock").addEventListener("click",unlock);
-    input.addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});
-    if(sessionStorage.getItem("eastmoney-platform-report-unlocked")==="1"){
-      gate.classList.add("hidden");
-      report.classList.remove("hidden");
-    }
-  </script>
-</body>
+  </body>
 </html>

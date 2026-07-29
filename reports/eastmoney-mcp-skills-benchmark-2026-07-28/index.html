@@ -32,8 +32,7 @@ table{width:100%;border-collapse:collapse;font-size:12.5px}th,td{text-align:left
 </style>
 </head>
 <body>
-<div id="gate" class="gate"><div class="gate-card"><div class="tri-logo"><i>聚</i><i>盈</i><i>东</i></div><h1>三家金融服务深度对比</h1><p>输入密码查看 010350 同题实测、数据审计与选型建议。</p><div class="gate-row"><input id="pw" type="password" inputmode="numeric" placeholder="访问密码"><button id="go">进入</button></div><div id="err" class="gate-err"></div></div></div>
-<div id="report" class="hidden">
+<div id="report">
 <nav class="nav"><div class="nav-in"><a class="brand" href="#top">三家金融 MCP / Skills 对比</a><div class="links"><a href="#reports">独立报告</a><a href="#truth">基金事实</a><a href="#matrix">能力矩阵</a><a href="#quality">口径审计</a><a href="#service">服务形态</a><a href="#decision">选型</a><a href="#sources">来源</a></div></div></nav>
 <main id="top" class="wrap">
   <header class="hero">
@@ -211,13 +210,8 @@ table{width:100%;border-collapse:collapse;font-size:12.5px}th,td{text-align:left
   </section>
 
   <section class="card" style="border-style:dashed;box-shadow:none;background:transparent">
-    <small><b>方法与免责声明：</b>聚源、盈米使用用户提供的 2026-07-23 完整报告；东财使用 2026-07-28 已登录页面的单次真实调用。评分为 010350 场景化研究判断，不是供应商整体审计。缺失项不以零补齐；不同份额、时间窗、同类池和频率不直接混算。报告不构成投资建议。页面密码是前端访问提示，不能替代服务端鉴权。</small>
+    <small><b>方法与免责声明：</b>聚源、盈米使用用户提供的 2026-07-23 完整报告；东财使用 2026-07-28 已登录页面的单次真实调用。评分为 010350 场景化研究判断，不是供应商整体审计。缺失项不以零补齐；不同份额、时间窗、同类池和频率不直接混算。报告不构成投资建议。本页现由工作台统一访问。</small>
   </section>
   <footer class="foot">三家金融 MCP / Skills 服务深度对比 · 010350 同题实测 · 2026-07-28</footer>
 </main></div>
-<script>
-const PASS="2026",gate=document.getElementById("gate"),report=document.getElementById("report"),pw=document.getElementById("pw"),err=document.getElementById("err");
-function unlock(){if(pw.value===PASS){gate.classList.add("hidden");report.classList.remove("hidden");sessionStorage.setItem("threeway010350","1")}else{err.textContent="密码不正确，请重试。";pw.select()}}
-document.getElementById("go").onclick=unlock;pw.addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});if(sessionStorage.getItem("threeway010350")==="1"){gate.classList.add("hidden");report.classList.remove("hidden")}
-</script>
 </body></html>

@@ -2,7 +2,7 @@
 
 - 研究日期：2026-07-28
 - 报告入口：`index.html`
-- 访问密码：`2026`
+- 访问方式：从 Clair's Studio 直接打开
 - 研究对象：<https://ai.eastmoney.com/skills>
 - 报告用途：盈米 / 且慢 AI Skill Hub、AI 实验室、OAP 的内部产品决策参考
 

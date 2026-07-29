@@ -153,28 +153,7 @@ td{padding:13px 10px;border-bottom:1px solid var(--border-light);color:var(--tex
 </style>
 </head>
 <body>
-<div class="container" id="accessGate">
-  <div class="report-header">
-    <div class="brand-lockup">
-      <img class="brand-icon" src="https://asset2.qieman.com/images/ecfb2f6c-76db-4f82-b06a-5787ae8d4e16.png" alt="且慢" width="40" height="40"/>
-      <div class="brand-text">
-        <p class="brand-heading">且慢报告 · 访问验证</p>
-        <p class="brand-sub">存储三巨头基金筛选 · 2026-07-29</p>
-      </div>
-    </div>
-  </div>
-  <div class="hero-card" style="max-width:560px;margin:8vh auto 24px">
-    <div class="hero-title">请输入访问口令</div>
-    <div class="hero-sub">验证成功后将在当前页面打开完整报告。</div>
-    <form id="accessForm" style="display:flex;gap:10px;flex-wrap:wrap">
-      <input id="accessCode" type="password" inputmode="numeric" autocomplete="current-password" placeholder="访问口令" aria-label="访问口令" style="flex:1;min-width:180px;min-height:42px;padding:0 14px;border:1px solid var(--border-color);border-radius:999px;background:var(--card-bg);color:var(--text-title);font:inherit"/>
-      <button class="theme-btn" type="submit" style="justify-content:center;min-height:42px">进入报告</button>
-    </form>
-    <p id="accessError" style="display:none;margin-top:12px;color:var(--up-color);font-size:13px">口令不正确，请重试。</p>
-  </div>
-</div>
-
-<div class="container" id="reportShell" style="display:none">
+<div class="container" id="reportShell">
 
 <div class="report-header">
   <div class="brand-lockup">
@@ -425,27 +404,6 @@ function toggleTheme(){
   document.getElementById('themeText').textContent=d?'深色模式':'浅色模式';
   setTimeout(renderCharts,0);
 }
-async function digest(value){
-  var bytes=new TextEncoder().encode(value);
-  var hash=await crypto.subtle.digest('SHA-256',bytes);
-  return Array.from(new Uint8Array(hash)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
-}
-function unlock(){
-  document.getElementById('accessGate').style.display='none';
-  document.getElementById('reportShell').style.display='block';
-  sessionStorage.setItem('storage-report-access','ok');
-  setTimeout(renderCharts,0);
-}
-document.getElementById('accessForm').addEventListener('submit',async function(event){
-  event.preventDefault();
-  var value=document.getElementById('accessCode').value.trim();
-  if(await digest(value)==='158a323a7ba44870f23d96f1516dd70aa48e9a72db4ebb026b0a89e212a208ab'){
-    unlock();
-  }else{
-    document.getElementById('accessError').style.display='block';
-  }
-});
-if(sessionStorage.getItem('storage-report-access')==='ok'){unlock()}
 window.addEventListener('resize',function(){charts.forEach(function(c){c.resize()})});
 </script>
 </body>
