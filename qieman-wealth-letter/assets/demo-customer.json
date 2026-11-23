@@ -1,0 +1,163 @@
+{
+  "customer_id": "demo-001",
+  "data_origin": "synthetic",
+  "as_of": "2026-11-20",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-11-20",
+    "label": "2026阶段版",
+    "complete_calendar_year": false
+  },
+  "scope": "仅且慢账户；银行备用金为本人补充且另列；非家庭完整资产负债表",
+  "authorization": {
+    "purpose": "fictional_product_demo",
+    "customer_content_allowed": true
+  },
+  "profile": {
+    "display_name": "小林"
+  },
+  "account": {
+    "bridge_type": "simplified_reconciled",
+    "currency": "CNY",
+    "opening": 300000,
+    "inflow": 60000,
+    "outflow": 20000,
+    "investment_pnl": -12000,
+    "closing": 328000,
+    "evidence_ids": [
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05"
+    ]
+  },
+  "facts": [
+    {
+      "id": "F01",
+      "customer_id": "demo-001",
+      "kind": "system",
+      "text": "2026-01-01且慢账户期初资产300000元",
+      "source": "合成账务",
+      "observed_at": "2026-01-01",
+      "confirmed": true,
+      "allowed_for_customer": true,
+      "confidence": "verified_in_synthetic_scenario"
+    },
+    {
+      "id": "F02",
+      "customer_id": "demo-001",
+      "kind": "system",
+      "text": "2026-01-01至2026-11-20已确认流入60000元",
+      "source": "合成账务",
+      "observed_at": "2026-11-20",
+      "confirmed": true,
+      "allowed_for_customer": true,
+      "confidence": "verified_in_synthetic_scenario"
+    },
+    {
+      "id": "F03",
+      "customer_id": "demo-001",
+      "kind": "system",
+      "text": "2026-01-01至2026-11-20已确认流出20000元，已完成到账",
+      "source": "合成账务",
+      "observed_at": "2026-11-20",
+      "confirmed": true,
+      "allowed_for_customer": true,
+      "confidence": "verified_in_synthetic_scenario"
+    },
+    {
+      "id": "F04",
+      "customer_id": "demo-001",
+      "kind": "system",
+      "text": "2026-01-01至2026-11-20投资损益-12000元，合成简化口径已含计入费用",
+      "source": "合成账务",
+      "observed_at": "2026-11-20",
+      "confirmed": true,
+      "allowed_for_customer": true,
+      "confidence": "verified_in_synthetic_scenario"
+    },
+    {
+      "id": "F05",
+      "customer_id": "demo-001",
+      "kind": "system",
+      "text": "2026-11-20且慢账户期末资产328000元",
+      "source": "合成账务",
+      "observed_at": "2026-11-20",
+      "confirmed": true,
+      "allowed_for_customer": true,
+      "confidence": "verified_in_synthetic_scenario"
+    },
+    {
+      "id": "F06",
+      "customer_id": "demo-001",
+      "kind": "customer_confirmed",
+      "text": "2026-09-18取用20000元用于已经开始的课程；本人确认用途，未提供课程名称",
+      "source": "虚构客户确认记录",
+      "observed_at": "2026-09-19",
+      "confirmed": true,
+      "allowed_for_customer": true,
+      "confidence": "verified_in_synthetic_scenario"
+    },
+    {
+      "id": "F07",
+      "customer_id": "demo-001",
+      "kind": "customer_confirmed",
+      "text": "2026-03-08记录愿望：去山里住一周；金额与出发日期未确认",
+      "source": "虚构目标卡",
+      "observed_at": "2026-03-08",
+      "confirmed": true,
+      "allowed_for_customer": true,
+      "confidence": "verified_in_synthetic_scenario"
+    },
+    {
+      "id": "F08",
+      "customer_id": "demo-001",
+      "kind": "customer_confirmed",
+      "text": "本人原话：比起挣得更多，我想留一点可以慢下来的时间。",
+      "source": "虚构本人留言",
+      "observed_at": "2026-11-02",
+      "confirmed": true,
+      "allowed_for_customer": true,
+      "confidence": "verified_in_synthetic_scenario"
+    },
+    {
+      "id": "F09",
+      "customer_id": "demo-001",
+      "kind": "customer_confirmed",
+      "text": "本人补充银行备用金72000元，独立于且慢账户",
+      "source": "虚构本人补充",
+      "observed_at": "2026-11-20",
+      "confirmed": true,
+      "allowed_for_customer": true,
+      "confidence": "verified_in_synthetic_scenario"
+    },
+    {
+      "id": "F10",
+      "customer_id": "demo-001",
+      "kind": "customer_confirmed",
+      "text": "本人补充每月必要支出8000元",
+      "source": "虚构本人补充",
+      "observed_at": "2026-11-20",
+      "confirmed": true,
+      "allowed_for_customer": true,
+      "confidence": "verified_in_synthetic_scenario"
+    },
+    {
+      "id": "F11",
+      "customer_id": "demo-001",
+      "kind": "derived",
+      "text": "根据所补充备用金与必要月支出估算，覆盖9个月必要开支",
+      "source": "示例计算",
+      "observed_at": "2026-11-20",
+      "confirmed": true,
+      "allowed_for_customer": true,
+      "confidence": "conditional",
+      "input_ids": [
+        "F09",
+        "F10"
+      ],
+      "formula": "72000 / 8000 = 9；不包含额外用款、负债、资产可用性变化"
+    }
+  ]
+}

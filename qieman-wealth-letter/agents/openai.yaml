@@ -1,0 +1,4 @@
+interface:
+  display_name: "且慢·一封信与财富记忆"
+  short_description: "把真实财富记录写成有温度的私人来信、财富档案与值得收藏的年度记忆"
+  default_prompt: "使用 $qieman-wealth-letter，根据已核验的客户资料，生成一封信、一份财富档案和一份财富记忆。"
